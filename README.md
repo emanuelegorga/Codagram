@@ -2,8 +2,8 @@
 
 ## Project ##
 
-We are building a web app similar to a basic CodeAcademy targeting the 7 to 11 years old.<br/>
-Our goal is to introduce kids to code :computer: Who knows we might create vocation :heart:
+We are building a simple learning web app targeting the 7 to 11 years old.<br/>
+Our goal is to introduce kids to code :computer: Who knows we might create vocation ... :heart:
 
 ## User story ##
 
@@ -25,37 +25,47 @@ I need to be able to sign out
 ```
 As a kid
 So that I can learn a programming language
-I need to be able to choose a language
+I need to be able to choose a language between multiple
 ```
 ```
 As a kid
 So that I can learn syntax
-I want to be able to pass some question
+I want to be able to reply to a multiple choice question
+```
+```
+As a kid
+So that I can carry on learning
+I want to be able to see a validation if my reply is the correct one
+```
+```
+As a kid
+So that I can correct myself
+I want to be able to see an hint about the correct reply if I am wrong
+```
+```
+As a kid
+So that I can test that I understood the previous concept
+I want to be able after I finished the 5 questions of a topic, to have a recap exercise with 5 questions that I can complete myself
+```
+```
+As a kid
+So that I can always learn new concepts
+I want to be able after the recap exercise to move on to an other topic
 ```
 ```
 As a kid
 So I can continue my learning
-I need to be able to have access to my profile page and to choose with which language I want to continue
+I want to have access to my profile page and to choose with which language I want to continue
 ```
 ```
 As a kid
 So I can follow my learning
-I need to be able to see how many percentage of the course I have completed
+I want to be able to see how many percentage of the course I have completed
 ```
 ```
 As a kid
-So I can be rewarded
-I need to have an increasing score for every question I pass
-```
-```
-As a kid
-So I can learn always more
-I need to have be able to access to a new level after a certain amount of succeeded questions
-```
-```
-As a kid
-So I can learn in a structured way
-I need to have be able to do some level in the order I wish and some other should be unlocked by the previous one completed
+So that I enjoy being on the website
+I want something colourful and pretty to look at
 ```
 
 ## Our approach ##
@@ -69,7 +79,7 @@ We are using these high level skills :<br/>
 
 ## Tech Stack ##
 - Python
-- Jquery
+- Flask
 - CSS
 - Html
 
