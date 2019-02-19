@@ -85,6 +85,7 @@ We are using these high level skills :<br/>
 
 ## Code Quality ##
 - Travis
+- Pytest
 
 ## Authors ##
 - [Onkar Sahota](https://github.com/OSSahota)
