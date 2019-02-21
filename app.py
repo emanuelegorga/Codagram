@@ -16,6 +16,13 @@ from models import *
 
 @app.before_first_request
 def setup():
+    # ques = Question.query.filter_by(id=1).delete()
+    # db.session.delete(ques)
+    # db.session.commit()
+
+    db.session.query(Question).delete()
+    db.session.commit()
+
     db.session.add(Question(question=u'q1 question1', choice1=u'q1 choice1', choice2=u'q1 choice2', choice3=u'q1 choice3', choice4=u'q1 choice4', answer=u'q1 choice1'))
     db.session.add(Question(question=u'q2 question1', choice1=u'q2 choice1', choice2=u'q2 choice2', choice3=u'q2 choice3', choice4=u'q2 choice4', answer=u'q2 choice2'))
     db.session.add(Question(question=u'q3 question1', choice1=u'q3 choice1', choice2=u'q3 choice2', choice3=u'q3 choice3', choice4=u'q3 choice4', answer=u'q3 choice3'))
