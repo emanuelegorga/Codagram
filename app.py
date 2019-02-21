@@ -2,7 +2,7 @@ import os
 import config
 from flask import Flask, render_template, request
 from lib import generator
-from lib import questions
+
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -10,6 +10,8 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+from lib import questions
 
 @app.route("/")
 def root():
@@ -40,3 +42,6 @@ def get_question():
 
     question = questions.generate_question()
     return render_template('question.html',question=question)
+
+if __name__ == '__main__':
+    app.run()
