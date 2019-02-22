@@ -53,11 +53,13 @@ def get_question_by_id(id_):
         # return "in the post request method"
         print(request.form['question'])
         if request.form['question'] == question.answer:
-            # print("Correct Well done")
-            return "Correct Well done!"
+            print("Correct Well done")
+            # return "Correct Well done!"
+            return render_template('question.html',question=question)
         else:
             # print("Wrong! Try Again")
-            return "Wrong! Try Again"
+            # return "Wrong! Try Again"
+            return render_template('question.html',question=question)
 
     return render_template('question.html',question=question)
 
