@@ -24,16 +24,20 @@ def setup():
     db.session.add(Question(question=u'q2 question', choice1=u'q2 choice1', choice2=u'q2 choice2', choice3=u'q2 choice3', choice4=u'q2 choice4', answer=u'q2 choice2'))
     db.session.add(Question(question=u'q3 question', choice1=u'q3 choice1', choice2=u'q3 choice2', choice3=u'q3 choice3', choice4=u'q3 choice4', answer=u'q3 choice3'))
     db.session.commit()
-    db.session.execute("INSERT INTO questions(question, choice1, choice2, choice3, choice4, answer) VALUES('q4 question', 'q4 choice1', 'q4 choice2', 'q4 choice3', 'q4 choice4', 'q4 choice4');")
+    db.session.execute("INSERT INTO questions(question, choice1, choice2, choice3, choice4, answer) \
+                        VALUES ('q4 question', 'q4 choice1', 'q4 choice2', 'q4 choice3', 'q4 choice4', 'q4 choice4');"
+                        )
     db.session.commit()
 
 @app.route("/")
 def root():
-    return "Index page - currently empty"
+    # return "Index page - currently empty"
+    return render_template('index.html')
 
-@app.route("/landing")
-def landing():
-    return "Welcome to our landing page :-)."
+@app.route("/introduction")
+def introduction():
+    # return "Welcome to our landing page :-)."
+    return render_template('introduction.html')
 
 @app.route("/getallquestions")
 def get_all():
@@ -43,7 +47,22 @@ def get_all():
     except Exception as q:
 	    return(str(q))
 
-@app.route("/question/<id_>", methods=['GET', 'POST'])
+@app.route("/tutorial_ruby")
+def tutorial_ruby():
+    # return "Welcome to our landing page :-)."
+    return render_template('tutorialruby.html')
+
+@app.route("/tutorial_python")
+def tutorial_python():
+    # return "Welcome to our landing page :-)."
+    return render_template('tutorialpython.html')
+
+@app.route("/tutorial_javascript")
+def tutorial_javascript():
+    # return "Welcome to our landing page :-)."
+    return render_template('tutorialjavascript.html')
+
+@app.route("/question_ruby/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(id_):
 
     question = Question.query.filter_by(id=id_).first()
@@ -55,7 +74,7 @@ def get_question_by_id(id_):
             with counter.get_lock():
                 counter.value += 1
                 id = counter.value
-            button = Markup(f'<form method="GET" action="/question/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/question_ruby/{id}"><button type="submit">next</button></form>')
             flash(button)
             return render_template('question.html',question=question)
         else:
