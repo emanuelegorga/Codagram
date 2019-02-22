@@ -1,11 +1,13 @@
 import os
 import config
 from flask import Flask, render_template, request, jsonify, flash, Markup
+from multiprocessing import Value
 # from lib import generator
 from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
 from flask_sqlalchemy import SQLAlchemy
 
+counter = Value('i', 1)
 app = Flask(__name__)
 
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -54,8 +56,13 @@ def get_question_by_id(id_):
         print(request.form['question'])
         if request.form['question'] == question.answer:
             print("Correct Well done")
+            with counter.get_lock():
+                counter.value += 1
+                id = counter.value
+                # id = str(unique_count)
+                # print(id)
             # return "Correct Well done!"
-            button = Markup('<button type="button" name="button">next</button>')
+            button = Markup(f'<form method="GET" action="/question/{id}"><button type="submit">next</button></form>')
             flash(button)
             return render_template('question.html',question=question)
         else:
