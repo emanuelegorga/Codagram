@@ -1,6 +1,6 @@
 import os
 import config
-from flask import Flask, render_template, request, jsonify, flash
+from flask import Flask, render_template, request, jsonify, flash, Markup
 # from lib import generator
 from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
@@ -55,6 +55,8 @@ def get_question_by_id(id_):
         if request.form['question'] == question.answer:
             print("Correct Well done")
             # return "Correct Well done!"
+            button = Markup('<button type="button" name="button">next</button>')
+            flash(button)
             return render_template('question.html',question=question)
         else:
             # print("Wrong! Try Again")
