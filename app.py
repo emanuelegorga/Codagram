@@ -1,6 +1,6 @@
 import os
 import config
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, flash
 # from lib import generator
 from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
@@ -59,6 +59,7 @@ def get_question_by_id(id_):
         else:
             # print("Wrong! Try Again")
             # return "Wrong! Try Again"
+            flash('this is a test flash message')
             return render_template('question.html',question=question)
 
     return render_template('question.html',question=question)
