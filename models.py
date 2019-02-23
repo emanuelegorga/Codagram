@@ -32,3 +32,30 @@ class Question(db.Model):
             'choice4': self.choice4,
             'answer': self.answer
         }
+
+class QuestionLevel2(db.Model):
+    __tablename__ = 'questions_level2'
+
+    id = db.Column(db.Integer, primary_key=True)
+    language = db.Column(db.String())
+    question_display_id = db.Column(db.Integer())
+    question = db.Column(db.String())
+    answer = db.Column(db.String())
+
+    def __init__(self, language, question_display_id, question, answer):
+        self.language = language
+        self.question_display_id = question_display_id
+        self.question = question
+        self.answer = answer
+
+    def __repr__(self):
+        return '<id {}>'.format(self.id)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'language': self.language,
+            'question_display_id': self.question_display_id,
+            'question': self.question,
+            'answer': self.answer
+        }

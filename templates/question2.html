@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="POST">
+      <h1>{{question2.question}}</h1>
+      <!-- <textarea rows="10" cols="50">
+      </textarea> -->
+      <input type="text" name="user_answer" value="">
+      <br>
+      <br>
+      <button type="submit">Submit Answer</button>
+    </form>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <h3>{{ message }}</h3>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </body>
+</html>
