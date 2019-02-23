@@ -96,20 +96,18 @@ def get_question_by_id(id_):
 def get_questionlevel2_by_id(id_):
 
     question2 = QuestionLevel2.query.filter_by(id=id_).first()
-    # print('question2')
-    # print(question2)
     if request.method =='POST':
-        print(request.form['user_answer'])
+        # print(request.form['user_answer'])
         if request.form['user_answer'] == question2.answer:
-            # print("Correct Well done")
             with counter_questionlevel2.get_lock():
                 counter_questionlevel2.value += 1
                 id = counter_questionlevel2.value
             button = Markup(f'<form method="GET" action="/questionlevel2_ruby/{id}"><button type="submit">next</button></form>')
+            flash("Well done!")
             flash(button)
             return render_template('question2.html',question2=question2)
         else:
-            flash('this is a flash message to feedback to user the answer is wrong!')
+            flash('That is wrong. Try again!')
             return render_template('question2.html',question2=question2)
 
     return render_template('question2.html',question2=question2)
