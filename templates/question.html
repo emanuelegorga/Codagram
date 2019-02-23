@@ -7,10 +7,19 @@
   <body>
     <form method="POST">
       <h1>{{question.question}}</h1>
-      <input type="radio" name="question" value="correct_answer"> {{question.correct_answer}}<br><br>
-      <input type="radio" name="question" value="incorrect_answer1"> {{question.incorrect_answer1}}<br><br>
-      <input type="radio" name="question" value="incorrect_answer2"> {{question.incorrect_answer2}}<br><br>
+      <input type="radio" name="question" id="choice1" value="{{question.choice1}}"> {{question.choice1}}<br><br>
+      <input type="radio" name="question" id="choice2" value="{{question.choice2}}"> {{question.choice2}}<br><br>
+      <input type="radio" name="question" id="choice3" value="{{question.choice3}}"> {{question.choice3}}<br><br>
+      <input type="radio" name="question" id="choice4" value="{{question.choice4}}"> {{question.choice4}}<br><br>
       <button type="submit">Submit</button><br>
     </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <h3>{{ message }}</h3>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   </body>
 </html>
