@@ -7,6 +7,7 @@ from sqlalchemy import event, DDL
 from flask_sqlalchemy import SQLAlchemy
 
 counter = Value('i', 1)
+counter_questionlevel2 = Value('i', 1)
 app = Flask(__name__)
 
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -28,6 +29,15 @@ def setup():
                         VALUES ('q4 question', 'q4 choice1', 'q4 choice2', 'q4 choice3', 'q4 choice4', 'q4 choice4');"
                         )
     db.session.commit()
+
+    db.session.query(QuestionLevel2).delete()
+    db.session.execute("ALTER SEQUENCE questions_level2_id_seq RESTART WITH 1;")
+    db.session.commit()
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'q1 Which bootcamp are you currently studying at?', answer=u'Makers Academy'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'q2 Name of your cohort?', answer=u'November 2018'))
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'q1 What is a Python?', answer=u'Snake'))
+    db.session.commit()
+
 
 @app.route("/")
 def root():
@@ -82,6 +92,28 @@ def get_question_by_id(id_):
             return render_template('question.html',question=question)
 
     return render_template('question.html',question=question)
+
+@app.route("/questionlevel2_ruby/<id_>", methods=['GET', 'POST'])
+def get_questionlevel2_by_id(id_):
+
+    question2 = QuestionLevel2.query.filter_by(id=id_).first()
+    # print('question2')
+    # print(question2)
+    if request.method =='POST':
+        print(request.form['user_answer'])
+        if request.form['user_answer'] == question2.answer:
+            # print("Correct Well done")
+            with counter_questionlevel2.get_lock():
+                counter_questionlevel2.value += 1
+                id = counter_questionlevel2.value
+            button = Markup(f'<form method="GET" action="/questionlevel2_ruby/{id}"><button type="submit">next</button></form>')
+            flash(button)
+            return render_template('question2.html',question2=question2)
+        else:
+            flash('this is a flash message to feedback to user the answer is wrong!')
+            return render_template('question2.html',question2=question2)
+
+    return render_template('question2.html',question2=question2)
 
 if __name__ == '__main__':
     app.run()
