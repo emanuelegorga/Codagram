@@ -46,12 +46,10 @@ def setup():
 
 @app.route("/")
 def root():
-    # return "Index page - currently empty"
     return render_template('index.html')
 
 @app.route("/introduction")
 def introduction():
-    # return "Welcome to our landing page :-)."
     return render_template('introduction.html')
 
 @app.route("/getallquestions")
@@ -62,19 +60,18 @@ def get_all():
     except Exception as q:
 	    return(str(q))
 
-@app.route("/tutorial_ruby")
-def tutorial_ruby():
-    return render_template('tutorialruby.html')
+@app.route("/tutorial/<language>")
+def tutorial_ruby(language):
+    if language == 'ruby':
+        return render_template('tutorialruby.html')
+    elif language == 'python':
+        return render_template('tutorialpython.html')
+    elif language == 'javascript':
+        return render_template('tutorialjavascript.html')
+    else:
+        return 'Error'
 
-@app.route("/tutorial_python")
-def tutorial_python():
-    return render_template('tutorialpython.html')
-
-@app.route("/tutorial_javascript")
-def tutorial_javascript():
-    return render_template('tutorialjavascript.html')
-
-@app.route("/question_ruby/<id_>", methods=['GET', 'POST'])
+@app.route("/question/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(id_):
 
     question = Question.query.filter_by(id=id_).first()
@@ -85,7 +82,7 @@ def get_question_by_id(id_):
             with counter.get_lock():
                 counter.value += 1
                 id = counter.value
-            button = Markup(f'<form method="GET" action="/question_ruby/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/question/{id}"><button type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question.html',question=question)
