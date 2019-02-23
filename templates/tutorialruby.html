@@ -2,10 +2,82 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Codagram</title>
   </head>
   <body>
-    <p>Add some information about Ruby, maybe bullet points, something interesting for kids etc...</p>
+    <h1>Learning the basic of Ruby programming language</h1>
+
+    <div class="introduction">
+      <p>Ruby is a programming language, and yes also a precious stone!
+        It is considered as a good option to start with because it is designed to be
+        read and written almost like English.
+        This language was created by Yukihiro Matsumoto in 1993 in Japan.
+        It is an OOP, Object Oriented Programming.</p>
+    </div>
+
+    <div class="lessons">
+      <h3>Data types: Numbers, Strings, Boolean</h3>
+      <p>In Ruby, your information (or data) can come in different types.
+        There are three data types in Ruby that we're interested in right now:
+        Integer (any number), Boolean (which can be true or false), Strings (any text).</p>
+
+        <h3>Strings</h3>
+        <p>In programming a string is a representation of text. Every time we want to display something
+          on the screen we need to write our text as a string. To do that we need to encapsulate our text
+          from single or double quotes exactly like this: "This is a string".</p>
+
+        <h3>Integers</h3>
+        <p>Integers in programming are basically numbers. Numbers don't need to be encapsulated
+          like text so you can simply write the number you want and it will be displayed on the screen.</p>
+
+        <h3>Booleans</h3>
+        <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
+          the two truth values: True or False. If we want to check if a person is hungry for example we can use a
+          boolean value to output whether that person is hungry or not. Example: is_hungry? True</p>
+
+        <h3>Variables</h3>
+        <p>One of the most basic concepts in computer programming is the variable.
+          You can think of a variable as a word or name that grasps a single value.
+          For example, let's say you needed the number 25 multiple times, you can just
+          store it in a variable and that variable will remember the number 25 for you.
+          To create a variable you simply need to give a name to the variable, put
+          an equal sign and on the right hand side put the data that you want to store.
+          Example: name = 'Codagram' to store a string or: age = 10 to store a number.</p>
+
+        <h3>Math</h3>
+        <p>Ruby can do a lot of powerfull things that you will discover. Ruby can also do
+          all the math you learned about in school. There are 4 main arithmetic operators we're going
+          to focus on: Addition, Subtraction, Division, Multiplication.</p>
+
+        <h3>'puts' and 'print'</h3>
+        <p>The 'puts' and 'print' command just take whatever you give it and prints it to the screen.
+          In fact to dispaly "Hello World" on the screen is super simple. You just need to upcase
+          either 'puts' or 'print' command and write next to it whatever you would like to display.
+          To print Hello World on the screen you can just do: puts 'Hello World' and it will appear on the screen.</p>
+
+        <h3>The '.length' method</h3>
+        <p> Methods are used to give some behaviour to our programs. If you have a string and you feel lazy to count how long is that string,
+          then comes in handy the '.length' method. You can simply use this method to output the exact number of characters contained in that string.
+          Example: we have 'Hello World', to count the length of this string we can simply do: 'Hello World'.length and it will output
+          the number 11 (it also counts spaces). Pretty simple, right?</p>
+
+        <h3>The '.reverse' method</h3>
+        <p>The '.reverse' method is called the same way '.length' is, but instead of asking Ruby to tell you how long a string is,
+          it spits out a backwards version of the string you gave it. For instance, we have our string 'Hello World'
+          and we want to have it reversed, we can use the '.reverse' method.
+          Example: 'Hello World'.reverse will output 'dlroW olleH'.</p>
+
+        <h3>'.upcase' & '.downcase'</h3>
+        <p>Let's try one more method (er, two methods). As you might have guessed, the '.upcase' and '.downcase' methods convert a string to ALL
+          UPPER CASE or all lower case, respectively.
+          Example: 'Hello World'.upcase will output 'HELLO WORLD'.</p>
+
+        <h3>Comments</h3>
+        <p>The '#' sign is for comments in Ruby. A comment is a bit of text that Ruby won't try to run as code: it's just for us to remember
+          what is doing a piece of code in case we forget and for other programmers who want to collaborate on the same project.
+          Example: #'this is a comment and will not appear on the screen'.</p>
+    </div>
+
     <form action="/question_ruby/1">
       <button type="submit">Ruby Quiz</button>
     </form>
