@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../img/codingkids.png);
+  background-repeat: no-repeat;
+  background-position: center 100%;
+  background-attachment: fixed;
+}
