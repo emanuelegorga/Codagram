@@ -43,10 +43,14 @@ def tutorial_ruby(language):
     else:
         return 'Error'
 
-@app.route("/question/<id_>", methods=['GET', 'POST'])
-def get_question_by_id(id_):
+@app.route("/question/<language>/<id_>", methods=['GET', 'POST'])
+def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
-    if int(id_) > 10:
+    if int(id_) > 10 and language == 'ruby':
+        return redirect(url_for('congratulationleve1'))
+    elif int(id_) > 20 and language == 'python':
+        return redirect(url_for('congratulationleve1'))
+    elif int(id_) > 30 and language == 'javascript':
         return redirect(url_for('congratulationleve1'))
 
     if request.method =='POST':
@@ -55,7 +59,7 @@ def get_question_by_id(id_):
             with counter.get_lock():
                 counter.value += 1
                 id = counter.value
-            button = Markup(f'<form method="GET" action="/question/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question.html',question=question)
@@ -87,7 +91,11 @@ def get_questionlevel2_by_id(id_):
 
 @app.route("/congratulationlevel1")
 def congratulationleve1():
-    return render_template('congratulation.html')
+    return render_template('congratulationlevel1.html')
+
+# @app.route("/congratulationlevel2")
+# def congratulationleve1():
+#     return render_template('congratulationlevel2.html')
 
 @app.before_first_request
 def setup():
