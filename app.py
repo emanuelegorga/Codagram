@@ -18,10 +18,14 @@ from models import *
 
 @app.route("/")
 def root():
+    counter.value = 1
+    counter_questionlevel2.value = 1
+    print(counter.value)
     return render_template('index.html')
 
 @app.route("/introduction")
 def introduction():
+    print(counter.value)
     return render_template('introduction.html')
 
 @app.route("/getallquestions")
@@ -47,11 +51,16 @@ def tutorial_ruby(language):
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
     if int(id_) > 10 and language == 'ruby':
-        return redirect(url_for('congratulationleve1'))
+        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button type="submit">Go on level 2!</button></form>')
+        flash("Well done! You completed the Ruby Level 1!")
+        flash(button)
+        return redirect(url_for('congratulationlevel1'))
     elif int(id_) > 20 and language == 'python':
-        return redirect(url_for('congratulationleve1'))
+        flash("Well done! You completed the Python Level 1!")
+        return redirect(url_for('congratulationlevel1'))
     elif int(id_) > 30 and language == 'javascript':
-        return redirect(url_for('congratulationleve1'))
+        flash("Well done! You completed the JavaScript Level 1!")
+        return redirect(url_for('congratulationlevel1'))
 
     if request.method =='POST':
         # print(request.form['question'])
@@ -69,17 +78,26 @@ def get_question_by_id(language, id_):
 
     return render_template('question.html',question=question)
 
-@app.route("/questionlevel2/<id_>", methods=['GET', 'POST'])
-def get_questionlevel2_by_id(id_):
-
+@app.route("/questionlevel2/<language>/<id_>", methods=['GET', 'POST'])
+def get_questionlevel2_by_id(language, id_):
     question2 = QuestionLevel2.query.filter_by(id=id_).first()
+    if int(id_) > 10 and language == 'ruby':
+        flash("Well done! You completed the Ruby Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+    elif int(id_) > 20 and language == 'python':
+        flash("Well done! You completed the Python Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+    elif int(id_) > 30 and language == 'javascript':
+        flash("Well done! You completed the JavaScript Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+
     if request.method =='POST':
         # print(request.form['user_answer'])
         if request.form['user_answer'] == question2.answer:
             with counter_questionlevel2.get_lock():
                 counter_questionlevel2.value += 1
                 id = counter_questionlevel2.value
-            button = Markup(f'<form method="GET" action="/questionlevel2/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question2.html',question2=question2)
@@ -90,12 +108,12 @@ def get_questionlevel2_by_id(id_):
     return render_template('question2.html',question2=question2)
 
 @app.route("/congratulationlevel1")
-def congratulationleve1():
+def congratulationlevel1():
     return render_template('congratulationlevel1.html')
 
-# @app.route("/congratulationlevel2")
-# def congratulationleve1():
-#     return render_template('congratulationlevel2.html')
+@app.route("/congratulationlevel2/<language>")
+def congratulationlevel2():
+    return render_template('congratulationlevel2.html')
 
 @app.before_first_request
 def setup():

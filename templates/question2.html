@@ -14,7 +14,7 @@
       <br>
       <button type="submit">Submit Answer</button>
     </form>
-    
+
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
@@ -22,5 +22,7 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
+
+    <form method="GET" action="/"><button type="submit">Go on the HomePage</button></form>
   </body>
 </html>
