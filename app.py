@@ -1,6 +1,6 @@
 import os
 import config
-from flask import Flask, render_template, request, jsonify, flash, Markup
+from flask import Flask, render_template, request, jsonify, flash, Markup, redirect, url_for
 from multiprocessing import Value
 from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
@@ -45,8 +45,9 @@ def tutorial_ruby(language):
 
 @app.route("/question/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(id_):
-
     question = Question.query.filter_by(id=id_).first()
+    if int(id_) > 10:
+        return redirect(url_for('congratulationleve1'))
 
     if request.method =='POST':
         # print(request.form['question'])
@@ -64,7 +65,7 @@ def get_question_by_id(id_):
 
     return render_template('question.html',question=question)
 
-@app.route("/questionlevel2_ruby/<id_>", methods=['GET', 'POST'])
+@app.route("/questionlevel2/<id_>", methods=['GET', 'POST'])
 def get_questionlevel2_by_id(id_):
 
     question2 = QuestionLevel2.query.filter_by(id=id_).first()
@@ -74,7 +75,7 @@ def get_questionlevel2_by_id(id_):
             with counter_questionlevel2.get_lock():
                 counter_questionlevel2.value += 1
                 id = counter_questionlevel2.value
-            button = Markup(f'<form method="GET" action="/questionlevel2_ruby/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/questionlevel2/{id}"><button type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question2.html',question2=question2)
@@ -83,6 +84,10 @@ def get_questionlevel2_by_id(id_):
             return render_template('question2.html',question2=question2)
 
     return render_template('question2.html',question2=question2)
+
+@app.route("/congratulationlevel1")
+def congratulationleve1():
+    return render_template('congratulation.html')
 
 @app.before_first_request
 def setup():
