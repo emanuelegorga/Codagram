@@ -20,21 +20,19 @@ from models import *
 def root():
     counter.value = 1
     counter_questionlevel2.value = 1
-    print(counter.value)
     return render_template('index.html')
 
 @app.route("/introduction")
 def introduction():
-    print(counter.value)
     return render_template('introduction.html')
 
-@app.route("/getallquestions")
-def get_all():
-    try:
-        questions=Question.query.all()
-        return jsonify([q.serialize() for q in questions])
-    except Exception as q:
-	    return(str(q))
+# @app.route("/getallquestions")
+# def get_all():
+#     try:
+#         questions=Question.query.all()
+#         return jsonify([q.serialize() for q in questions])
+#     except Exception as q:
+# 	    return(str(q))
 
 @app.route("/tutorial/<language>")
 def tutorial_ruby(language):
