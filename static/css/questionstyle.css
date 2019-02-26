@@ -10,16 +10,20 @@ h1, h2, h3, h4, h5, h6 {
 h1{
   color: #0000FF;
 }
+
 h3{
   color: #0000FF;
 }
+
 h4 {
   font-size: 21px;
 }
+
 h4, h5, h6 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -33,16 +37,6 @@ body {
   background-image: url(/static/img/clouds.jpg);
   position: relative;
   text-align: center;
-}
-
-.container {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.welcome {
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
 
 .submitbutton {
@@ -61,6 +55,7 @@ body {
   color: orange;
   transition: all 1s ease;
 }
+
 .submitbutton:hover {
   background-color: white;
   color: #1E90FF;
@@ -74,7 +69,7 @@ body {
   padding: 10px 25px;
   font-weight: bold;
   color: white;
-  display: inline-block;
+  display: float;
 }
 
 .homepagebutton:hover {
@@ -91,10 +86,16 @@ body {
 
 .homepagebutton {
   position: absolute;
-  top: 0;
-  left: 10px;
+  top: -150px;
+  left: 20px;
   font-size: 8pt;
   font-family: tahoma;
   margin-top: 1px;
   margin-right: 2px;
+}
+
+.header {
+  margin-top: 15%;
+  margin-left: 40px;
+  margin-right: 40px;
 }
