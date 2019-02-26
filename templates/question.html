@@ -2,17 +2,26 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questionstyle.css') }}">
+    <title>Codagram</title>
   </head>
   <body>
-    <form method="POST">
-      <h1>{{question.question}}</h1>
-      <input type="radio" name="question" id="choice1" value="{{question.choice1}}"> {{question.choice1}}<br><br>
-      <input type="radio" name="question" id="choice2" value="{{question.choice2}}"> {{question.choice2}}<br><br>
-      <input type="radio" name="question" id="choice3" value="{{question.choice3}}"> {{question.choice3}}<br><br>
-      <input type="radio" name="question" id="choice4" value="{{question.choice4}}"> {{question.choice4}}<br><br>
-      <button type="submit">Submit</button><br>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
     </form>
+
+    <h1 class="header" >{{question.question}}</h1>
+
+    <div class="questions">
+      <form method="POST">
+        <input type="radio" name="question" id="choice1" value="{{question.choice1}}"> {{question.choice1}}<br><br>
+        <input type="radio" name="question" id="choice2" value="{{question.choice2}}"> {{question.choice2}}<br><br>
+        <input type="radio" name="question" id="choice3" value="{{question.choice3}}"> {{question.choice3}}<br><br>
+        <input type="radio" name="question" id="choice4" value="{{question.choice4}}"> {{question.choice4}}<br><br>
+        <button class="submitbutton" type="submit">Submit</button><br>
+      </form>
+    </div>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -21,5 +30,6 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
+
   </body>
 </html>

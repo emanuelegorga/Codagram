@@ -1,6 +1,6 @@
 import os
 import config
-from flask import Flask, render_template, request, jsonify, flash, Markup
+from flask import Flask, render_template, request, jsonify, flash, Markup, redirect, url_for
 from multiprocessing import Value
 from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
@@ -15,6 +15,103 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 from models import *
+
+@app.route("/")
+def root():
+    counter.value = 1
+    counter_questionlevel2.value = 1
+    return render_template('index.html')
+
+@app.route("/introduction")
+def introduction():
+    return render_template('introduction.html')
+
+# @app.route("/getallquestions")
+# def get_all():
+#     try:
+#         questions=Question.query.all()
+#         return jsonify([q.serialize() for q in questions])
+#     except Exception as q:
+# 	    return(str(q))
+
+@app.route("/tutorial/<language>")
+def tutorial_ruby(language):
+    if language == 'ruby':
+        return render_template('tutorialruby.html')
+    elif language == 'python':
+        return render_template('tutorialpython.html')
+    elif language == 'javascript':
+        return render_template('tutorialjavascript.html')
+    else:
+        return 'Error'
+
+@app.route("/question/<language>/<id_>", methods=['GET', 'POST'])
+def get_question_by_id(language, id_):
+    question = Question.query.filter_by(id=id_).first()
+    if int(id_) > 10 and language == 'ruby':
+        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
+        flash("Well done! You completed the Ruby Level 1!")
+        flash(button)
+        return redirect(url_for('congratulationlevel1'))
+    elif int(id_) > 20 and language == 'python':
+        flash("Well done! You completed the Python Level 1!")
+        return redirect(url_for('congratulationlevel1'))
+    elif int(id_) > 30 and language == 'javascript':
+        flash("Well done! You completed the JavaScript Level 1!")
+        return redirect(url_for('congratulationlevel1'))
+
+    if request.method =='POST':
+        # print(request.form['question'])
+        if request.form['question'] == question.answer:
+            with counter.get_lock():
+                counter.value += 1
+                id = counter.value
+            button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
+            flash("Well done!")
+            flash(button)
+            return render_template('question.html',question=question)
+        else:
+            flash('That is wrong. Try again!')
+            return render_template('question.html',question=question)
+
+    return render_template('question.html',question=question)
+
+@app.route("/questionlevel2/<language>/<id_>", methods=['GET', 'POST'])
+def get_questionlevel2_by_id(language, id_):
+    question2 = QuestionLevel2.query.filter_by(id=id_).first()
+    if int(id_) > 10 and language == 'ruby':
+        flash("Well done! You completed the Ruby Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+    elif int(id_) > 20 and language == 'python':
+        flash("Well done! You completed the Python Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+    elif int(id_) > 30 and language == 'javascript':
+        flash("Well done! You completed the JavaScript Level 2!")
+        return redirect(url_for('congratulationlevel2'))
+
+    if request.method =='POST':
+        # print(request.form['user_answer'])
+        if request.form['user_answer'] == question2.answer:
+            with counter_questionlevel2.get_lock():
+                counter_questionlevel2.value += 1
+                id = counter_questionlevel2.value
+            button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
+            flash("Well done!")
+            flash(button)
+            return render_template('question2.html',question2=question2)
+        else:
+            flash('That is wrong. Try again!')
+            return render_template('question2.html',question2=question2)
+
+    return render_template('question2.html',question2=question2)
+
+@app.route("/congratulationlevel1")
+def congratulationlevel1():
+    return render_template('congratulationlevel1.html')
+
+@app.route("/congratulationlevel2/<language>")
+def congratulationlevel2():
+    return render_template('congratulationlevel2.html')
 
 @app.before_first_request
 def setup():
@@ -38,84 +135,20 @@ def setup():
     db.session.query(QuestionLevel2).delete()
     db.session.execute("ALTER SEQUENCE questions_level2_id_seq RESTART WITH 1;")
     db.session.commit()
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'q1 Which bootcamp are you currently studying at?', answer=u'Makers Academy'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'q2 Name of your cohort?', answer=u'November 2018'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'1) What do you use in between an object and a method?', answer=u'.'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'2) What is 8 % 5', answer=u'3'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=3, question=u'3) Given the string "World" how do you add Hello in front of?', answer=u'"#{Hello} World"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4) What must every class have?', answer=u'end'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the number 42 as a string?', answer=u'puts "42"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would print a[2] output?', answer=u'false'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would print a[3] output?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would the output be if you write h[2]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include?("est1") output?', answer=u'true'))
+
     db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'q1 What is a Python?', answer=u'Snake'))
     db.session.commit()
 
-
-@app.route("/")
-def root():
-    # return "Index page - currently empty"
-    return render_template('index.html')
-
-@app.route("/introduction")
-def introduction():
-    # return "Welcome to our landing page :-)."
-    return render_template('introduction.html')
-
-@app.route("/getallquestions")
-def get_all():
-    try:
-        questions=Question.query.all()
-        return jsonify([q.serialize() for q in questions])
-    except Exception as q:
-	    return(str(q))
-
-@app.route("/tutorial_ruby")
-def tutorial_ruby():
-    return render_template('tutorialruby.html')
-
-@app.route("/tutorial_python")
-def tutorial_python():
-    return render_template('tutorialpython.html')
-
-@app.route("/tutorial_javascript")
-def tutorial_javascript():
-    return render_template('tutorialjavascript.html')
-
-@app.route("/question_ruby/<id_>", methods=['GET', 'POST'])
-def get_question_by_id(id_):
-
-    question = Question.query.filter_by(id=id_).first()
-
-    if request.method =='POST':
-        # print(request.form['question'])
-        if request.form['question'] == question.answer:
-            with counter.get_lock():
-                counter.value += 1
-                id = counter.value
-            button = Markup(f'<form method="GET" action="/question_ruby/{id}"><button type="submit">next</button></form>')
-            flash("Well done!")
-            flash(button)
-            return render_template('question.html',question=question)
-        else:
-            flash('That is wrong. Try again!')
-            return render_template('question.html',question=question)
-
-    return render_template('question.html',question=question)
-
-@app.route("/questionlevel2_ruby/<id_>", methods=['GET', 'POST'])
-def get_questionlevel2_by_id(id_):
-
-    question2 = QuestionLevel2.query.filter_by(id=id_).first()
-    # print('question2')
-    # print(question2)
-    if request.method =='POST':
-        print(request.form['user_answer'])
-        if request.form['user_answer'] == question2.answer:
-            # print("Correct Well done")
-            with counter_questionlevel2.get_lock():
-                counter_questionlevel2.value += 1
-                id = counter_questionlevel2.value
-            button = Markup(f'<form method="GET" action="/questionlevel2_ruby/{id}"><button type="submit">next</button></form>')
-            flash(button)
-            return render_template('question2.html',question2=question2)
-        else:
-            flash('this is a flash message to feedback to user the answer is wrong!')
-            return render_template('question2.html',question2=question2)
-
-    return render_template('question2.html',question2=question2)
 
 if __name__ == '__main__':
     app.run()

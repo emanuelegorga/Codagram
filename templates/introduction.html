@@ -2,10 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/introductioncss.css') }}">
+    <title>Codagram</title>
   </head>
   <body>
-    <h1>Introduction to Programming</h1>
+    <div class="intro">
+      <h1 class="title">Introduction to Programming</h1>
+    </div>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
+      <!-- <button type="submit">Go on the HomePage</button> -->
+    </form>
 
     <!-------------------------- COMPUTER INTRODUCTION -------------------------->
 
@@ -37,42 +45,59 @@
     </div>
 
     <div class="choices">
-      <h4>Choose a language</h4>
+    <div class="choice-ruby">
 
       <!-------------------------- RUBY FORMS -------------------------->
 
-      <form action="/tutorial_ruby">
-        <p>Ruby link (prefer image)</p>
-        <button type="submit">Ruby Tutorial</button>
+      <form action="/tutorial/ruby">
+        <img class="rubyimage" src="static/img/ruby6.png" alt="myself photo">
+        <a href="tutorial/ruby" class="tutorial">Ruby Tutorial</a>
       </form>
-      <form action="/question_ruby/1">
-        <p>Ruby link (prefer image)</p>
-        <button type="submit">Ruby Quiz</button>
+      <form action="/question/ruby/1">
+        <a href="question/ruby/1" class="level1">Ruby Quiz Level 1</a>
       </form>
+      <form action="/questionlevel2/ruby/1">
+        <a href="questionlevel2/ruby/1" class="level2">Ruby Quiz Level 2</a>
+      </form>
+
+    </div>
 
       <!-------------------------- PYTHON FORMS -------------------------->
 
-      <form action="/tutorial_python">
-        <p>Python link (prefer image)</p>
-        <button type="submit">Python Tutorial</button>
+    <div class="choice-python">
+
+      <form action="/tutorial/python">
+        <img src="static/img/python2.png" alt="myself photo">
+        <a href="tutorial/python" class="tutorial">Python Tutorial</a>
       </form>
-      <form action="/question_python/1">
-        <p>Python link (prefer image)</p>
-        <button type="submit">Python Quiz</button>
+      <form action="/question/python/11">
+        <a href="question/python/11" class="level1">Python Quiz Level 1</a>
       </form>
+      <form action="/questionlevel2/python/11">
+        <a href="questionlevel2/python/11" class="level2" id="pythonlevel2">Python Quiz Level 2</a>
+      </form>
+
+    </div>
 
       <!-------------------------- JAVASCRIPT FORMS -------------------------->
 
-      <form action="/tutorial_javascript">
-        <p>Javascript link (prefer image)</p>
-        <button type="submit">Javascript Tutorial</button>
+    <div class="choice-javascript">
+
+      <form action="/tutorial/javascript">
+        <img src="static/img/javascript2.png" alt="myself photo">
+        <a href="tutorial/javascript" class="tutorial">JavaScript Tutorial</a>
       </form>
-      <form action="/question_javascript/1">
-        <p>Javascript link (prefer image)</p>
-        <button type="submit">Javascript Quiz</button>
+      <form action="/question/javascript/21">
+        <a href="question/javascript/21" class="level1">JavaScript Quiz Level 1</a>
       </form>
+      <form action="/questionlevel2/javascript/21">
+        <a href="questionlevel2/javascript/21" class="level2">JavaScript Quiz Level 2</a>
+      </form>
+
     </div>
 
+
+    </div>
 
 
   </body>

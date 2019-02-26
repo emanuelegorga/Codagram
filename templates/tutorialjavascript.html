@@ -2,12 +2,122 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styletutorial.css') }}">
+    <title>Codagram</title>
   </head>
   <body>
-    <p>Add some information about Javascript, maybe bullet points, something interesting for kids etc...</p>
-    <form action="/question_javascript/1">
-      <button type="submit">Javascript Quiz</button>
+    <h1>Learning the basic of JavaScript programming language</h1>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
     </form>
+
+    <div class="container">
+
+      <div class="introduction">
+        <p>JavaScript ("JS" for short) is a full-fledged dynamic programming language that,
+          when applied to an HTML document, can provide dynamic interactivity on websites. It was invented
+          by Brendan Eich, co-founder of the Mozilla project, the Mozilla Foundation, and the Mozilla Corporation.
+          JavaScript is incredibly versatile. You can start small, with carousels, image galleries, fluctuating layouts,
+          and responses to button clicks. With more experience, you'll be able to create games, animated 2D and 3D graphics,
+          comprehensive database-driven apps, and much more!</p>
+      </div>
+
+      <div class="lessons">
+        <h3>Data types: Numbers, Strings, Boolean</h3>
+        <p>In JavaScript, your information (or data) can come in different types.
+          There are three data types in JavaScript that we're interested in right now:
+          Integer (any number), Boolean (which can be true or false), Strings (any text).</p>
+
+          <h3>Strings</h3>
+          <p>In programming a string is a representation of text. Every time we want to display something
+            on the screen we need to write our text as a string. To do that we need to encapsulate our text
+            from single or double quotes exactly like this: "This is a string".</p>
+
+          <h3>Integers</h3>
+          <p>Integers in programming are basically numbers. Numbers don't need to be encapsulated
+            like text so you can simply write the number you want and it will be displayed on the screen.</p>
+
+          <h3>Booleans</h3>
+          <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
+            the two truth values: True or False. If we want to check if a person is hungry for example we can use a
+            boolean value to output whether that person is hungry or not.</p>
+
+          <h3>Variables</h3>
+          <p>One of the most basic concepts in computer programming is a variable.
+            You can think of a variable as a word or name that grasps a single value.
+            For example, let's say you needed the number 25 multiple times, you can just
+            store it in a variable and that variable will remember the number 25 for you.
+            To create a variable you simply need to use the keyword let or var, give a name to the variable, put
+            an equal sign and on the right hand side put the data that you want to store.
+            Example: let name = 'Codagram' to store a string or: let age = 10 to store a number.</p>
+
+          <h3>Arrays</h3>
+          <p>Arrays are ways to store data inside the code. An example of a variable equating an array would be
+            var a = [195,"Hello World",true]. Arrays can store any type of data, even other arrays!. This one stores an integer, a string
+            and a boolean value. A quick way to display a value from the array a on your screen it would be: console.log(a[0]), the output
+            would be 195 as arrays start from 0 and count onwards. You could also add things into the array with the .push inbuilt method. For example
+            if we did a.push([1,2]), the new array would be a = [195,"Hello World",true,[1,2]]. The .delete method does the opposite of the .push method.
+
+          <h3>The .push inbuilt method</h3>
+          <p>You could also add things into the array with the .push inbuilt method. Take the example above for instance. If we did a.push([1,2]), the new array would
+          be a = [195,"Hello World",true,[1,2]].</p>
+
+          <h3>Hashes</h3>
+          <p>Hashes are similar to arrays in that they hold data. However, you can access specific values in it by searching up its index. Perfect for online dictionaries!
+            An example of this would be: let dictionary = { one: "uno", two: "dos", three: "tres" }. If we type puts dictionary["one"], the output will be uno.
+
+          <h3>Math</h3>
+          <p>JavaScript can do a lot of powerfull things that you will discover. It can also do
+            all the math you learned about in school. There are 4 main arithmetic operators we're going
+            to focus on: Addition, Subtraction, Division, Multiplication. In addition to this, there is
+            also a % operator which equates to the remainder of an operation. So for example 5 % 3 = 2.</p>
+
+          <h3>The JavaScript console</h3>
+          <p>The console object gives you access to the browser’s console. It lets you output strings, arrays, and objects that help debug your code. The console is part of
+            the window object, and is supplied by the Browser Object Model (BOM). We can get access to the console in one of two ways:</br>
+             window.console.log('This works') / console.log('So does this').</p>
+
+         <h3>Inbuilt methods</h3>
+         <p>There are a number of inbuilt methods in JavaScript. This means you can access them without ever typing a word. An example of this would be
+           the methods .includes() or .startsWith(). Both of these return a boolean value. The first method checks whether or not the object inside the parentheses
+           is included anywhere in the object it's called on. On the other hand, the second method checks whether the value inside the parentheses is what starts
+           the objects that is called.
+
+          <h3>The '.length()' method</h3>
+          <p> Methods are used to give some behaviour to our programs. If you have a string and you feel lazy to count how long is that string,
+            then comes in handy the '.length' method. You can simply use this method to output the exact number of characters contained in that string.
+            Example: we have 'Hello World', to count the length of this string we can simply do: 'Hello World'.length() and it will output
+            the number 11 (it also counts spaces). Pretty simple, right?</p>
+
+          <h3>The '.reverse()' method</h3>
+          <p>The '.reverse()' method is called the same way '.length()' is, but instead of asking Ruby to tell you how long a string is,
+            it spits out a backwards version of the string you gave it. For instance, we have our string 'Hello World'
+            and we want to have it reversed, we can use the '.reverse' method.
+            Example: 'Hello World'.reverse() will output 'dlroW olleH'.</p>
+
+          <h3>'.toUpperCase()' & '.toLowerCase()'</h3>
+          <p>Let's try one more method (er, two methods). As you might have guessed, the '.toUpperCase()' and '.toLowerCase()' methods convert a string to ALL
+            UPPER CASE or all lower case, respectively.
+            Example: 'Hello World'.toUpperCase() will output 'HELLO WORLD'.</p>
+
+          <h3>Classes</h3>
+          <p>Imagine you were an object that is an instance of the class Person. In a certain way, you actually are. Since you are a person, you are able
+            to remember your own name and able to do something with it. When asked, you can return your name to whoever called it. In the same way, methods
+            can interact with instances of classes. In the code, every classes must have a keyword end that concludes its content. Typically, methods are used to
+            interact with instances of classes in larger scale applications.</p>
+
+          <h3>Comments</h3>
+          <p>The '//' sign is for comments in JavaScript. A comment is a bit of text that JavaScript won't try to run as code: it's just for us to remember
+            what is doing a piece of code in case we forget and for other programmers who want to collaborate on the same project.
+            Example: //'this is a comment and will not appear on the screen'.</p>
+      </div>
+
+    <form action="/question/javascript/21">
+      <a href="/question/javascript/21" class="questionbutton">Take the Quiz</a>
+    </form>
+
+    </div>
+
   </body>
 </html>

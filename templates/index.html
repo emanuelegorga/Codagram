@@ -2,15 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Codagram</title>
   </head>
   <body>
-    <h1>Welcome to Codagram</h1>
+    <div class="hero-image">
+    </div>
+    <h1 class="welcome">Welcome to ℂ𝕆𝔻𝔸𝔾ℝ𝔸𝕄</h1>
 
-    <h3>Learning how to code for KIDS</h3>
+    <h3>Learning how to code for ⓀⒾⒹⓈ 👧🏼 👦🏽 🧒🏻</h3>
 
+    <div class="container">
     <header>
-      Explore free tools, techniques and ideas to inspire fun and creativity in your children's approach to programming.
+      Explore free tools, techniques and ideas to inspire fun and creativity in your children's approach to programming 💻
     </header>
 
     <div class="quote">
@@ -18,12 +23,14 @@
     </div>
 
     <div class="content">
-      Programming is becoming an essential skill in nearly every modern industry. In fact, it's predicted that by 2020 there will be 1,000,000 more computer science jobs than computer science students. Wow!
-      But more than any of that, when taught correctly, programming can be a whole heap of fun! Learning to code is an amazing, practical and hugely rewarding hobby and skill for kids of all ages.
-    </div>
+      Programming is becoming an essential skill in nearly every modern industry. In fact, it's predicted that by 2020 there will be 1,000,000 more computer science jobs than computer science students. Wow! 😳 <br>
+      But more than any of that, when taught correctly, programming can be a whole heap of fun! 🤹🏻‍♂️ <br>
+      Learning to code is an amazing, practical and hugely rewarding hobby and skill for kids of all ages.
+    </div><br><br><br>
+  </div>
 
     <form action="/introduction">
-      <button type="submit">Introduction To Coding</button>
+      <a class="intro_button" href="introduction">Introduction to coding 👀</a>
     </form>
   </body>
 </html>
