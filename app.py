@@ -112,8 +112,8 @@ def setup():
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4) What must every class have?', answer=u'end'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the number 42 as a string?', answer=u'puts "42"'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would print a[2] output?', answer=u'false'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push["WOW"], what would print a[3] output?', answer=u'WOW'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = ["one" => "un", "two" => "deux", "three" => "trois"]. What would the output be if you write h[2]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would print a[3] output?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would the output be if you write h[2]', answer=u'trois'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'10) Given a string s = "Test123". What would s.include?("est1") output?', answer=u'true'))
 
