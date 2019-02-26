@@ -2,14 +2,22 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styletutorial.css') }}">
+    <title>Codagram</title>
   </head>
   <body>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
+    </form>
+    <div class="container">
+
     <p>Add some information about Python, maybe bullet points, something interesting for kids etc...</p>
-    <form action="/question/python/11">
-      <button type="submit">Python Quiz</button>
+    <form action="/question/pyhon/11">
+      <a href="/question/python/11" class="questionbutton">Take the Quiz</a>
     </form>
 
-    <form method="GET" action="/"><button type="submit">Go on the HomePage</button></form>
+  </div>
+
   </body>
 </html>

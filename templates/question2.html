@@ -2,18 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questionstyle.css') }}">
+    <title>Codagram</title>
   </head>
   <body>
-    <form method="POST">
-      <h1>{{question2.question}}</h1>
-      <!-- <textarea rows="10" cols="50">
-      </textarea> -->
-      <input type="text" name="user_answer" value="">
-      <br>
-      <br>
-      <button type="submit">Submit Answer</button>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
     </form>
+
+    <h1>{{question2.question}}</h1>
+
+    <div class="questions">
+      <form method="POST">
+        <input type="text" name="user_answer" value="">
+        <br>
+        <br>
+        <button class="submitbutton" type="submit">Submit Answer</button>
+      </form>
+    </div>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -23,6 +30,5 @@
       {% endif %}
     {% endwith %}
 
-    <form method="GET" action="/"><button type="submit">Go on the HomePage</button></form>
   </body>
 </html>

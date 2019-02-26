@@ -3,7 +3,8 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Comic Sans MS';
+  color: #0000FF;
 }
 
 h4 {
@@ -23,11 +24,11 @@ body {
   font-size: 17px;
   line-height: 1.7;
   font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Comic Sans MS';
   position: relative;
   text-align: center;
-  background-color: blue;
-
+  color: #00008B;
+  background-image: url(/static/img/clouds.jpg);
 }
 
 .container {
@@ -41,7 +42,7 @@ body {
 }
 
 .questionbutton {
-  background-color: orange;
+  background-color: #1E90FF;
   text-decoration: none;
   border-radius: 20px;
   padding: 10px 25px;
@@ -59,12 +60,12 @@ body {
 
 .questionbutton:hover {
   background-color: white;
-  color: orange;
+  color: #1E90FF;
   transition: all 1s ease;
 }
 
 .homepagebutton {
-  background-color: orange;
+  background-color: #1E90FF;
   text-decoration: none;
   border-radius: 20px;
   padding: 10px 25px;
@@ -81,7 +82,7 @@ body {
 
 .homepagebutton:hover {
   background-color: white;
-  color: orange;
+  color: #1E90FF;
   transition: all 1s ease;
 }
 

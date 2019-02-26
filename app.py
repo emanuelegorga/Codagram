@@ -49,7 +49,7 @@ def tutorial_ruby(language):
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
     if int(id_) > 10 and language == 'ruby':
-        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button type="submit">Go on level 2!</button></form>')
+        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
         flash("Well done! You completed the Ruby Level 1!")
         flash(button)
         return redirect(url_for('congratulationlevel1'))
@@ -66,7 +66,7 @@ def get_question_by_id(language, id_):
             with counter.get_lock():
                 counter.value += 1
                 id = counter.value
-            button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question.html',question=question)

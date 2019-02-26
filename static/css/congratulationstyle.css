@@ -35,7 +35,7 @@ body {
   text-align: center;
 }
 
-.container {
+/* .container {
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -43,9 +43,9 @@ body {
 .welcome {
   margin-top: 5%;
   margin-bottom: 5%;
-}
+} */
 
-.intro_button {
+.homepagebutton {
   background-color: #1E90FF;
   text-decoration: none;
   border-radius: 20px;
@@ -55,12 +55,12 @@ body {
   display: inline-block;
   margin-bottom: 20px;
 }
-.intro_button:hover {
+.homepagebutton:hover {
   background-color: white;
   color: orange;
   transition: all 1s ease;
 }
-.intro_button:hover {
+.homepagebutton:hover {
   background-color: white;
   color: #1E90FF;
   transition: all 1s ease;
