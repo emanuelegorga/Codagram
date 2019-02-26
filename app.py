@@ -95,7 +95,7 @@ def get_questionlevel2_by_id(language, id_):
             with counter_questionlevel2.get_lock():
                 counter_questionlevel2.value += 1
                 id = counter_questionlevel2.value
-            button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button type="submit">next</button></form>')
+            button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
             return render_template('question2.html',question2=question2)
@@ -135,8 +135,17 @@ def setup():
     db.session.query(QuestionLevel2).delete()
     db.session.execute("ALTER SEQUENCE questions_level2_id_seq RESTART WITH 1;")
     db.session.commit()
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'q1 Which bootcamp are you currently studying at?', answer=u'Makers Academy'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'q2 Name of your cohort?', answer=u'November 2018'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'1) What do you use in between an object and a method?', answer=u'.'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'2) What is 8 % 5', answer=u'3'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=3, question=u'3) Given the string "World" how do you add Hello in front of?', answer=u'"#{Hello} World"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4) What must every class have?', answer=u'end'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the number 42 as a string?', answer=u'puts "42"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would print a[2] output?', answer=u'false'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would print a[3] output?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would the output be if you write h[2]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include?("est1") output?', answer=u'true'))
+
     db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'q1 What is a Python?', answer=u'Snake'))
     db.session.commit()
 

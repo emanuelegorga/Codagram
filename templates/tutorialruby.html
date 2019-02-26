@@ -43,7 +43,7 @@
           boolean value to output whether that person is hungry or not. Example: is_hungry? True</p>
 
         <h3>Variables</h3>
-        <p>One of the most basic concepts in computer programming is the variable.
+        <p>One of the most basic concepts in computer programming is a variable.
           You can think of a variable as a word or name that grasps a single value.
           For example, let's say you needed the number 25 multiple times, you can just
           store it in a variable and that variable will remember the number 25 for you.
@@ -51,14 +51,32 @@
           an equal sign and on the right hand side put the data that you want to store.
           Example: name = 'Codagram' to store a string or: age = 10 to store a number.</p>
 
+        <h3>Arrays</h3>
+        <p>Arrays are ways to store data inside the code. An example of a variable equating an array would be
+          a = [195,"Hello World",true]. Arrays can store any type of data, even other arrays!. This one stores an integer, a string
+          and a boolean value. If you print a[0], the output would be 195 as arrays start from 0 and count onwards.
+          You could also add things into the array with the .push method. For example if we did a.push([1,2]), the new array would
+          be a = [195,"Hello World",true,[1,2]]. The .delete method does the opposite of the .push method.
+
+        <h3>The .push and .delete methods</h3>
+        <p>You could also add things into the array with the .push method. Take the example above for instance.If we did a.push([1,2]), the new array would
+        be a = [195,"Hello World",true,[1,2]]. The .delete method does the opposite of the .push method. If we did a.delete[0] or a.delete(195), the new array
+        would be a = ["Hello World",true,[1,2]].</p>
+
+        <h3>Hashes</h3>
+        <p>Hashes are similar to arrays in that they hold data. However, you can access specific values in it by searching up its index. Perfect for online dictionaries!
+          An example of this would be dictionary = { "one" => "uno", "two" => "dos", "three" => "tres" }. If we type puts dictionary["one"], the output will be uno.
+
         <h3>Math</h3>
         <p>Ruby can do a lot of powerfull things that you will discover. Ruby can also do
           all the math you learned about in school. There are 4 main arithmetic operators we're going
-          to focus on: Addition, Subtraction, Division, Multiplication.</p>
+          to focus on: Addition, Subtraction, Division, Multiplication. In addition to this, there is
+          also a % operator which equates to the remainder of an operation. So for example 5 % 3 = 2.
+          Finally, you can also use exponents in Ruby by using **</p>
 
         <h3>'puts' and 'print'</h3>
         <p>The 'puts' and 'print' command just take whatever you give it and prints it to the screen.
-          In fact to dispaly "Hello World" on the screen is super simple. You just need to upcase
+          In fact displaying "Hello World" on the screen is super simple. You just need to upcase
           either 'puts' or 'print' command and write next to it whatever you would like to display.
           To print Hello World on the screen you can just do: puts 'Hello World' and it will appear on the screen.</p>
 
@@ -78,6 +96,18 @@
         <p>Let's try one more method (er, two methods). As you might have guessed, the '.upcase' and '.downcase' methods convert a string to ALL
           UPPER CASE or all lower case, respectively.
           Example: 'Hello World'.upcase will output 'HELLO WORLD'.</p>
+
+        <h3>Inbuilt methods</h3>
+        <p>There are a number of inbuilt methods in Ruby. This means you can access them without ever typing a word. An example of this would be
+          the methods .include?() or .start_with?(). Both of these return a boolean value. The first method checks whether or not the object inside the parentheses
+          is included anywhere in the object it's called on. On the other hand, the second method checks whether the value inside the parentheses is what starts
+          the objects that is called.
+
+        <h3>Classes</h3>
+        <p>Imagine you were an object that is an instance of the class Person. In a certain way, you actually are. Since you are a person, you are able
+          to remember your own name and able to do something with it. When asked, you can return your name to whoever called it. In the same way, methods
+          can interact with instances of classes. In the code, every classes must have a keyword end that concludes its content. Typically, methods are used to
+          interact with instances of classes in larger scale applications.</p>
 
         <h3>Comments</h3>
         <p>The '#' sign is for comments in Ruby. A comment is a bit of text that Ruby won't try to run as code: it's just for us to remember
