@@ -133,6 +133,21 @@ def setup():
     db.session.add(Question(question=u'8) Which of the following is not a valid datatype in Ruby?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
     db.session.add(Question(question=u'9) What is the extension used for saving a ruby file?', choice1=u'.ruby', choice2=u'.r', choice3=u'.rb', choice4=u'.ry', answer=u'.rb'))
     db.session.add(Question(question=u'10) How do you comment out a single line of code in Ruby?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
+# ------------ PYTHON QUESTIONS PART 1 ------------
+    db.session.add(Question(question=u'1) How many data types are available in Python?', choice1=u'3', choice2=u'4', choice3=u'5', choice4=u'6', answer=u'5'))
+    db.session.add(Question(question=u'2) Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'("Hello")'))
+    db.session.add(Question(question=u'3) Which of the following is known as a boolean value?', choice1=u'Yes', choice2=u'Truth', choice3=u'Real', choice4=u'True', answer=u'True'))
+    db.session.add(Question(question=u'4) How do you display "Hi there!" on the screen?', choice1=u'print "Hi there!"', choice2=u'print("Hi there!")', choice3=u'"print Hi there!"', choice4=u'prints Hi there!', answer=u'print("Hi there!")'))
+    db.session.add(Question(question=u'5) How do you display the number 23 on the screen?', choice1=u'23', choice2=u'print(23)', choice3=u'23 print', choice4=u'print "23"', answer=u'print(23)'))
+    db.session.add(Question(question=u'6) Which of the following is the correct way to assign the number 30 to the variable a?', choice1=u'a = 30', choice2=u'a(30)', choice3=u'30 = a', choice4=u'a == 30', answer=u'a = 30'))
+    db.session.add(Question(question=u'7) Given a variable a = 25, how do you display the value of the variable a?', choice1=u'print "a"', choice2=u'print variable(a)', choice3=u'print(a)', choice4=u'a', answer=u'print(a)'))
+    db.session.add(Question(question=u'8) Which of the following is not a valid datatype in Python?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
+    db.session.add(Question(question=u'9) What is the extension used for saving a python file?', choice1=u'.python', choice2=u'.p', choice3=u'.py', choice4=u'.pt', answer=u'.py'))
+    db.session.add(Question(question=u'10) What do you use to comment out a single line of code in Python?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
+
+# ------------ JAVASCRIPT QUESTIONS PART 1 ------------
+
+
 # ------------ RUBY QUESTIONS PART 2 ------------
     db.session.commit()
 
@@ -148,10 +163,16 @@ def setup():
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of a[3] ?', answer=u'WOW'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of h["three"]', answer=u'trois'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include?("est1") output?', answer=u'true'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
+# ------------ PYTHON QUESTIONS PART 2 ------------
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=11, question=u'q1 What is a Python?', answer=u'Snake'))
 
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'q1 What is a Python?', answer=u'Snake'))
+
+# ------------ JAVASCRIPT QUESTIONS PART 2 ------------
+
+
     db.session.commit()
+
 
 
 if __name__ == '__main__':
