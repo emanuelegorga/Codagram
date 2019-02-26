@@ -6,11 +6,102 @@
     <title>Codagram</title>
   </head>
   <body>
+    <h1>Learning the basic of Python programming language</h1>
 
     <form method="GET" action="/">
       <a href="/" class="homepagebutton">HOMEPAGE 🏠</a>
     </form>
+
+
     <div class="container">
+    <h3>Data types: Numbers, Strings and Boolean</h3>
+    <p>In Python, data can come in different ways. In Python, there are 6
+      different data types, but as a starting tutorial, we will only be
+      looking at 3: numbers, strings and boolean.</p>
+
+    <h3>Strings</h3>
+    <p>In programming a string is a representation of text. Every time we want to display something
+      on the screen we need to write our text as a string. To do that we need to encapsulate our text
+      from single or double quotes and put those within parentheses exactly like this: ("This is a string").</p>
+
+    <h3>Integers</h3>
+    <p>Integers in programming are basically numbers. Numbers don't need to be encapsulated
+      like text so you can simply write the number you want and it will be displayed on the screen.</p>
+
+    <h3>Booleans</h3>
+    <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
+      the two truth values: True or False.  True</p>
+
+    <h3>Variables</h3>
+    <p>One of the most basic concepts in computer programming is a variable.
+      You can think of a variable as a word or name that grasps a single value.
+      For example, let's say you needed the number 25 multiple times, you can just
+      store it in a variable and that variable will remember the number 25 for you.
+      To create a variable you simply need to give a name to the variable, put
+      an equal sign and on the right hand side put the data that you want to store.
+      Example: name = 'Codagram' to store a string or: age = 10 to store a number.</p>
+
+    <h3>Arrays</h3>
+    <p>Arrays are ways to store data inside the code. An example of a variable equating an array would be
+      a = [195,"Hello World",true]. Arrays can store any type of data, even other arrays!. This one stores an integer, a string
+      and a boolean value. You can interact with the array in a number of different ways. For example, you can write
+      a.count(x) and it would display the amount of times x occurs within the array.
+
+    <h3>The .push and .delete methods</h3>
+    <p>You could also add things into the array with the .push method. Take the example above for instance.If we did a.push([1,2]), the new array would
+      be a = [195,"Hello World",true,[1,2]]. The .delete method does the opposite of the .push method. If we did a.delete[0] or a.delete(195), the new array
+      would be a = ["Hello World",true,[1,2]].</p>
+
+    <h3>Hashes</h3>
+    <p>Hashes are similar to arrays in that they hold data. However, you can access specific values in it by searching up its index. Perfect for online dictionaries!
+        An example of this would be dictionary = {'one': 'uno', "two": "dos", "three": "tres"}. If we type puts dictionary["one"], the output will be uno.</p>
+
+    <h3>Math</h3>
+    <p>Python can do a lot of powerfull things that you will discover. Python can also do
+      all the math you learned about in school. There are 4 main arithmetic operators we're going
+      to focus on: Addition, Subtraction, Division, Multiplication. In addition to this, there is
+      also a % operator which equates to the remainder of an operation. So for example 5 % 3 = 2.
+      Finally, you can also use exponents in Ruby by using **</p>
+
+    <h3>'print'</h3>
+    <p>The 'print' command just take whatever you give it and prints it to the screen.
+      In fact displaying "Hello World" on the screen is super simple. You just need to type
+      'print' command and write next to it whatever you would like to display.
+      To print Hello World on the screen you can just do: print 'Hello World' and it will appear on the screen.</p>
+
+    <h3>The '.length' method</h3>
+    <p> Methods are used to give some behaviour to our programs. If you have a string and you feel lazy to count how long is that string,
+      then comes in handy the '.length' method. You can simply use this method to output the exact number of characters contained in that string.
+      Example: we have 'Hello World', to count the length of this string we can simply do: 'Hello World'.length and it will output
+      the number 11 (it also counts spaces). Pretty simple, right?</p>
+
+    <h3>The '.reverse' method</h3>
+    <p>The '.reverse' method is called the same way '.length' is, but instead of asking Ruby to tell you how long a string is,
+      it spits out a backwards version of the string you gave it. For instance, we have our string 'Hello World'
+      and we want to have it reversed, we can use the '.reverse' method.
+      Example: 'Hello World'.reverse will output 'dlroW olleH'.</p>
+
+    <h3>'.upcase' & '.downcase'</h3>
+    <p>Let's try one more method (er, two methods). As you might have guessed, the '.upcase' and '.downcase' methods convert a string to ALL
+      UPPER CASE or all lower case, respectively.
+      Example: 'Hello World'.upcase will output 'HELLO WORLD'.</p>
+
+    <h3>Inbuilt methods</h3>
+    <p>There are a number of inbuilt methods in Python. This means you can access them without ever typing a word. An example of this would be
+      the methods .include?() or .start_with?(). Both of these return a boolean value. The first method checks whether or not the object inside the parentheses
+      is included anywhere in the object it's called on. On the other hand, the second method checks whether the value inside the parentheses is what starts
+      the objects that is called.
+
+    <h3>Classes</h3>
+    <p>Imagine you were an object that is an instance of the class Person. In a certain way, you actually are. Since you are a person, you are able
+      to remember your own name and able to do something with it. When asked, you can return your name to whoever called it. In the same way, methods
+      can interact with instances of classes. Typically, methods are used to
+      interact with instances of classes in larger scale applications.</p>
+
+    <h3>Comments</h3>
+    <p>The '#' sign is for comments in Python. A comment is a bit of text that Ruby won't try to run as code: it's just for us to remember
+      what is doing a piece of code in case we forget and for other programmers who want to collaborate on the same project.
+      Example: #'this is a comment and will not appear on the screen'.</p>
 
     <p>Add some information about Python, maybe bullet points, something interesting for kids etc...</p>
     <form action="/question/pyhon/11">
