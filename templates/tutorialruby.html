@@ -2,10 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styletutorial.css') }}">
     <title>Codagram</title>
   </head>
   <body>
     <h1>Learning the basic of Ruby programming language</h1>
+
+    <form method="GET" action="/">
+      <a href="/" class="homepagebutton">HOMEPAGE</a>
+    </form>
+
+    <div class="container">
 
     <div class="introduction">
       <p>Ruby is a programming language, and yes also a precious stone!
@@ -78,10 +85,11 @@
           Example: #'this is a comment and will not appear on the screen'.</p>
     </div>
 
+    </div>
+
     <form action="/question/ruby/1">
-      <button type="submit">Ruby Quiz</button>
+      <a href="/question/ruby/1" class="questionbutton">Take the Quiz</a>
     </form>
 
-    <form method="GET" action="/"><button type="submit">Go on the HomePage</button></form>
   </body>
 </html>
