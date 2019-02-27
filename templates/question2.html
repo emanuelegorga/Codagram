@@ -15,10 +15,17 @@
 
     <div class="questions">
       <form method="POST">
+<<<<<<< HEAD
         <input type="text" name="user_answer" value="">
         <br>
         <br>
         <button class="submitbutton" type="submit">Submit Answer ✍️</button>
+=======
+        <input type="text" name="user_answer" value="{{txtboxvalue}}"><br><br>
+
+        <button class="submitbutton" type="submit" {{submitbtn}}>{% if submitbtn == "Disabled" %} THAT'S CORRECT! {% else %} Submit Answer {% endif %}</button><br>
+
+>>>>>>> master
       </form>
     </div>
 
