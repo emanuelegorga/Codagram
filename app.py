@@ -198,16 +198,7 @@ def setup():
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
 # ------------ PYTHON QUESTIONS PART 2 ------------
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'1) Python part2', answer=u'.'))
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=2, question=u'2) Python part 2 again', answer=u'3'))
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=3, question=u'3) python3', answer=u'"#{Hello} World"'))
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=4, question=u'4) python4', answer=u'end'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the integer 42 as a string?', answer=u'puts "42"'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would be the output of a[2] output?', answer=u'false'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of a[3] ?', answer=u'WOW'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of h["three"]', answer=u'trois'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
+    
 
 # ------------ JAVASCRIPT QUESTIONS PART 2 ------------
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=1, question=u' 1️⃣ What is JavaScript?', answer=u'programming language'))
