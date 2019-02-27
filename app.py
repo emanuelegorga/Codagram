@@ -92,11 +92,11 @@ def get_questionlevel2_by_id(language, id_):
                 counter_questionlevel2.value += 1
                 id = counter_questionlevel2.value
             button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">next 🙌</button></form>')
-            flash("Well done!")
+            flash("Well done! 💪 ")
             flash(button)
             return render_template('question2.html',question2=question2)
         else:
-            flash('That is wrong. Try again!')
+            flash('That is wrong 🚫  Try again!')
             return render_template('question2.html',question2=question2)
 
     return render_template('question2.html',question2=question2)
@@ -115,7 +115,7 @@ def setup():
     db.session.execute("ALTER SEQUENCE questions_id_seq RESTART WITH 1;")
     db.session.commit()
 # ------------ RUBY QUESTIONS PART 1 ------------
-    db.session.add(Question(question=u'1️⃣ How many data types are available in Ruby?', choice1=u'3', choice2=u'1', choice3=u'4', choice4=u'2', answer=u'3'))
+    db.session.add(Question(question=u'1️⃣ How many data types are available in Ruby?', choice1=u'3', choice2=u'1', choice3=u'4', choice4=u'6', answer=u'6'))
     db.session.add(Question(question=u'2️⃣ Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
     db.session.add(Question(question=u'3️⃣ Which of the following is known as a boolean value?', choice1=u'Yes', choice2=u'Truth', choice3=u'Real', choice4=u'True', answer=u'True'))
     db.session.add(Question(question=u'4️⃣ How do you display "Hi there!" on the screen?', choice1=u'put "Hi there!"', choice2=u'puts "Hi there!"', choice3=u'"puts Hi there!"', choice4=u'puts Hi there!', answer=u'puts "Hi there!"'))
