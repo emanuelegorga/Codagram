@@ -49,6 +49,7 @@ def tutorial_ruby(language):
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
     rbchecked = None
+    submitbtn = "Enabled"
     if int(id_) > 10 and language == 'ruby':
         button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
         flash("Well done! You completed the Ruby Level 1 🎉!")
@@ -66,7 +67,6 @@ def get_question_by_id(language, id_):
         return redirect(url_for('congratulationlevel1'))
 
     if request.method =='POST':
-        # print(request.form['question'])
         rbchecked = request.form['question']
         if request.form['question'] == question.answer:
             with counter.get_lock():
@@ -75,10 +75,11 @@ def get_question_by_id(language, id_):
             button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">Next</button></form>')
             flash("Well done! 💪 ")
             flash(button)
-            return render_template('question.html',question=question,rbchecked=rbchecked)
+            submitbtn = "Disabled"
+            return render_template('question.html',question=question,rbchecked=rbchecked,submitbtn=submitbtn)
         else:
             flash('That is wrong 🚫 Try again!')
-            return render_template('question.html',question=question,rbchecked=rbchecked)
+            return render_template('question.html',question=question,rbchecked=rbchecked,submitbtn=submitbtn)
 
     return render_template('question.html',question=question)
 
@@ -86,6 +87,7 @@ def get_question_by_id(language, id_):
 def get_questionlevel2_by_id(language, id_):
     question2 = QuestionLevel2.query.filter_by(id=id_).first()
     txtboxvalue = None
+    submitbtn = "Enabled"
     if int(id_) > 10 and language == 'ruby':
         flash("Well done! You completed the Ruby Level 2! 🏅")
         return redirect(url_for('congratulationlevel2'))
@@ -97,7 +99,6 @@ def get_questionlevel2_by_id(language, id_):
         return redirect(url_for('congratulationlevel2'))
 
     if request.method =='POST':
-        # print(request.form['user_answer'])
         txtboxvalue = request.form['user_answer']
         if request.form['user_answer'] == question2.answer:
             with counter_questionlevel2.get_lock():
@@ -106,10 +107,11 @@ def get_questionlevel2_by_id(language, id_):
             button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">Next</button></form>')
             flash("Well done!")
             flash(button)
-            return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue)
+            submitbtn = "Disabled"
+            return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue,submitbtn=submitbtn)
         else:
             flash('That is wrong. Try again!')
-            return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue)
+            return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue,submitbtn=submitbtn)
 
     return render_template('question2.html',question2=question2)
 
