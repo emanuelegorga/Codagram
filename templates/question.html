@@ -15,11 +15,12 @@
 
     <div class="questions">
       <form method="POST">
-        <input type="radio" name="question" id="choice1" value="{{question.choice1}}"> {{question.choice1}}<br><br>
-        <input type="radio" name="question" id="choice2" value="{{question.choice2}}"> {{question.choice2}}<br><br>
-        <input type="radio" name="question" id="choice3" value="{{question.choice3}}"> {{question.choice3}}<br><br>
-        <input type="radio" name="question" id="choice4" value="{{question.choice4}}"> {{question.choice4}}<br><br>
-        <button class="submitbutton" type="submit">Submit</button><br>
+        <input type="radio" name="question" id="choice1" value="{{question.choice1}}" {% if rbchecked == question.choice1 %} checked {% endif %}> {{question.choice1}}<br><br>
+        <input type="radio" name="question" id="choice2" value="{{question.choice2}}" {% if rbchecked == question.choice2 %} checked {% endif %}> {{question.choice2}}<br><br>
+        <input type="radio" name="question" id="choice3" value="{{question.choice3}}" {% if rbchecked == question.choice3 %} checked {% endif %}> {{question.choice3}}<br><br>
+        <input type="radio" name="question" id="choice4" value="{{question.choice4}}" {% if rbchecked == question.choice4 %} checked {% endif %}> {{question.choice4}}<br><br>
+
+        <button class="submitbutton" type="submit" {{submitbtn}}>{% if submitbtn == "Disabled" %} THAT'S CORRECT! {% else %} Submit Answer {% endif %}</button><br>
       </form>
     </div>
 
