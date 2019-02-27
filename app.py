@@ -6,9 +6,13 @@ from sqlalchemy.event import listen
 from sqlalchemy import event, DDL
 from flask_sqlalchemy import SQLAlchemy
 
-counter = Value('i', 1)
+counter_ruby = Value('i', 1)
 counter_python = Value('i', 11)
-counter_questionlevel2 = Value('i', 1)
+counter_javascript = Value('i', 21)
+counter_questionlevel2_ruby = Value('i', 1)
+counter_questionlevel2_python = Value('i', 11)
+counter_questionlevel2_javascript = Value('i', 21)
+
 app = Flask(__name__)
 
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -19,8 +23,12 @@ from models import *
 
 @app.route("/")
 def root():
-    counter.value = 1
-    counter_questionlevel2.value = 1
+    counter_ruby.value = 1
+    counter_python.value = 11
+    counter_javascript.value = 21
+    counter_questionlevel2_ruby.value = 1
+    counter_questionlevel2_python.value = 11
+    counter_questionlevel2_javascript.value = 21
     return render_template('index.html')
 
 @app.route("/introduction")
@@ -68,13 +76,16 @@ def get_question_by_id(language, id_):
     if request.method =='POST':
         # print(request.form['question'])
         if request.form['question'] == question.answer:
-            with counter.get_lock():
-                if language == 'python':
+            with counter_ruby.get_lock():
+                if language == 'ruby':
+                    counter_ruby.value += 1
+                    id = counter_ruby.value
+                elif language == 'python':
                     counter_python.value += 1
                     id = counter_python.value
-                elif language == 'ruby':
-                    counter.value += 1
-                    id = counter.value
+                elif language == 'javascript':
+                    counter_javascript.value += 1
+                    id = counter_javascript.value
 
             button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
             flash("Well done! 💪 ")
@@ -102,9 +113,16 @@ def get_questionlevel2_by_id(language, id_):
     if request.method =='POST':
         # print(request.form['user_answer'])
         if request.form['user_answer'] == question2.answer:
-            with counter_questionlevel2.get_lock():
-                counter_questionlevel2.value += 1
-                id = counter_questionlevel2.value
+            with counter_questionlevel2_ruby.get_lock():
+                if language == 'ruby':
+                    counter_questionlevel2_ruby.value += 1
+                    id = counter_questionlevel2_ruby.value
+                elif language == 'python':
+                    counter_questionlevel2_python.value += 1
+                    id = counter_questionlevel2_python.value
+                elif language == 'javascript':
+                    counter_questionlevel2_javascript.value += 1
+                    id = counter_questionlevel2_javascript.value
             button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
             flash("Well done!")
             flash(button)
@@ -152,8 +170,8 @@ def setup():
     db.session.add(Question(question=u'10) What do you use to comment out a single line of code in Python?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
 
 # ------------ JAVASCRIPT QUESTIONS PART 1 ------------
-    db.session.add(Question(question=u'1) How many data types are available in Ruby?', choice1=u'3', choice2=u'1', choice3=u'4', choice4=u'2', answer=u'3'))
-    db.session.add(Question(question=u'2) Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
+    db.session.add(Question(question=u'1) JavaScript2', choice1=u'3', choice2=u'1', choice3=u'4', choice4=u'2', answer=u'3'))
+    db.session.add(Question(question=u'2) javascript1', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
     db.session.add(Question(question=u'3) Which of the following is known as a boolean value?', choice1=u'Yes', choice2=u'Truth', choice3=u'Real', choice4=u'True', answer=u'True'))
     db.session.add(Question(question=u'4) How do you display "Hi there!" on the screen?', choice1=u'put "Hi there!"', choice2=u'puts "Hi there!"', choice3=u'"puts Hi there!"', choice4=u'puts Hi there!', answer=u'puts "Hi there!"'))
     db.session.add(Question(question=u'5) How do you display the integer 23 on the screen?', choice1=u'23', choice2=u'puts 23', choice3=u'23 puts', choice4=u'puts "23"', answer=u'puts 23'))
@@ -180,8 +198,16 @@ def setup():
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
 # ------------ PYTHON QUESTIONS PART 2 ------------
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=11, question=u'q1 What is a Python?', answer=u'Snake'))
-
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'1) Python part2', answer=u'.'))
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=2, question=u'2) Python part 2 again', answer=u'3'))
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=3, question=u'3) Given the string "World", how do you make a string interpolation to get the final string "Hello World" to be output?', answer=u'"#{Hello} World"'))
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=4, question=u'4) What is the syntax to close a class ?', answer=u'end'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the integer 42 as a string?', answer=u'puts "42"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would be the output of a[2] output?', answer=u'false'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of a[3] ?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of h["three"]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
 
 # ------------ JAVASCRIPT QUESTIONS PART 2 ------------
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=21, question=u'1) JAVASCRITP1', answer=u'.'))
@@ -192,8 +218,8 @@ def setup():
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=26, question=u'6) Given an array a = [25, "Yikes!", false]. What would be the output of a[2] output?', answer=u'false'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=27, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of a[3] ?', answer=u'WOW'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=28, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of h["three"]', answer=u'trois'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=29, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=30, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=29, question=u'9) javascript9', answer=u'321TSET'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=30, question=u'10) Given a string s = "javascript10', answer=u'true'))
 
     db.session.commit()
 
