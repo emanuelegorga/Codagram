@@ -19,13 +19,14 @@
         It is considered as a good option to start with because it is designed to be
         read and written almost like English.
         This language was created by Yukihiro Matsumoto in 1993 in Japan.
-        It is what we call an OOP, Object Oriented Programming.</p>
+        It is what we call an OOP, Object Oriented Programming language.</p>
     </div>
 
     <div class="lessons">
-      <h3>Data types: Numbers, Strings, Boolean</h3>
-      <p>In Ruby, your information (or data) can come in different types.
-        There are three data types in Ruby that we're interested in right now:<br>
+      <h3>Data types: Integers, Strings, Boolean</h3>
+      <p>In Ruby, your information (or data) can come in different types.<br>
+        Ruby have six differents data type.
+        However, we will be focus on three right now:<br>
         - Integer : any number 🔢<br>
         - Boolean : true or false 👌<br>
         - Strings : any text 🆒</p>
@@ -34,6 +35,13 @@
         <p>In programming a string is a representation of text. Every time we want to display something
           on the screen we need to write our text as a string. To do that we need to encapsulate our text
           with single or double quotes exactly like this: "This is a string" or 'This is a string'.</p>
+
+        <h3>Booleans</h3>
+        <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
+            the two truth values: true or false.<br>
+            If we want to check if a person is hungry for example we can use a
+            boolean value to output whether that person is hungry or not.<br>
+            Example: person.is_hungry? true</p>
 
         <h3>Integers</h3>
         <p>Integers in programming are basically numbers. Numbers don't need to be encapsulated
@@ -45,28 +53,21 @@
           Finally, you can also use exponents in Ruby by using **.<br>
           For example : 2 ** 3 = 8</p>
 
-        <h3>Booleans</h3>
-        <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
-          the two truth values: True or False.<br>
-          If we want to check if a person is hungry for example we can use a
-          boolean value to output whether that person is hungry or not.<br>
-          Example: person.is_hungry? True</p>
-
         <h3>Variables</h3>
         <p>One of the most basic concepts in computer programming is a variable.
           You can think of a variable as a word or name that grasps a single value.<br>
-          For example, let's say you needed the number 25 multiple times, you can just
+          For example, let's say you need to use the number 25 multiple times, you can just
           store it in a variable and that variable will remember the number 25 for you.<br>
           To create a variable you simply need to give a name to the variable, put
-          an equal sign and on the right hand side put the data that you want to store.<br>
+          an equal sign and on its right and to write the data that you want to store.<br>
           Example: name = "Codagram" name is the variable which is storing the "Codagram" string.<br>
-          or: age = 10 age is the variable which is storing the integer 10.</p>
+          Or: age = 10 age is the variable which is storing the integer 10.</p>
 
 
-        <h3>'puts' and 'print'</h3>
+        <h3>puts and print</h3>
         <p>The puts and print command just take whatever you give it and prints it to the screen.<br>
             In fact displaying "Hello World" on the screen is super simple. You just need to upcase
-            either puts or print command and write next to it whatever you would like to display.<br>
+            either puts or print command and write next to it whatever you would like to displayed.<br>
             The main difference between puts and print is that puts adds a newline after executing and print does not.<br>
             To ouput Hello World you can just do: puts "Hello World" and it will appears on the screen.</p>
 
@@ -75,7 +76,7 @@
             If you have a string and you feel lazy to count how long is that string,
             then comes in handy the .length method. You can simply use this method to output the exact number of characters contained in that string.<br>
             Example: we have "Hello World", to count the length of this string we can simply do: "Hello World".length and it will output
-            the number 11 (it also counts spaces).<br>
+            the length 11 (it also counts spaces).<br>
             Pretty simple, right?
             You can also use this method on array, that we gonna speak about on the next topic.</p>
 
@@ -84,34 +85,34 @@
           An example of a variable storing an array would be a = [195, "Hello World", true].<br>
           Arrays can store any type of data. They can even store other arrays!. This one stores an integer, a string
           and a boolean value.<br>
-          If you do a[0], the output would be 195 as array's index starts from 0 and count onwards.<br><br>
+          To acces to an item inside it's easy. If you do a[0], the output would be 195 because array's index starts from 0 and count onwards.<br><br>
           You could also add data into an array by using the .push method.<br>
           For example if we do a.push([1,2]), the new array would
           be a = [195,"Hello World",true,[1,2]]. <br>
-          The .delete method does the opposite exact of the .push method.
+          The .delete method does the opposite exact of the .push method.</p>
 
         <h3>Hashes</h3>
         <p>Hashes are similar to arrays in that they hold data.<br>
           However, they are using a key/value pair. It is a bit like a dictionary.<br>
           You can access a specific value in a hash by searching up its key.<br>
           An example of this would be : h = { "Ferrari" => "sport car", "color" => "red", "symbol" => "horse", "doors" => 2 }.<br>
-          If we type : puts h[Ferrari], the output will be sport car.
+          If we type : puts h["Ferrari"], the output will be sport car.</p>
 
-        <h3>The '.reverse' method</h3>
+        <h3>The .reverse method</h3>
         <p>The .reverse method is called the same way as .length is, but instead of asking Ruby to tell you how long a string is,
           it spits out a backwards version of the string you gave it. It can also be called on an array.
           For instance, we have our string "Hello World"
           and we want to have it reversed, we can use the .reverse method.<br>
-          Example: "Hello World".reverse will output 'dlroW olleH'.</p>
+          Example: "Hello World".reverse will become 'dlroW olleH'.</p>
 
-        <h3>'.upcase' & '.downcase'</h3>
-        <p>Let's try one more method. As you might have guessed, the .upcase and .downcase methods convert a string to ALL
+        <h3>.upcase & .downcase methods</h3>
+        <p>Let's try two more methods. As you might have guessed, the .upcase and .downcase methods convert a string to ALL
           UPPER CASE or all lower case, respectively.<br>
-          Example: "Hello World".upcase will output HELLO WORLD
+          Example: "Hello World".upcase will become "HELLO WORLD"
           "HELLO WORLD".lowcase will output hello world</p>
 
         <h3>Inbuilt methods</h3>
-        <p>There are a huge number of inbuilt methods in Ruby. This means you can access them without ever typing a word. An example of this would be
+        <p>There are a plenty of inbuilt methods in Ruby. This means you can access them without ever typing a word. An example of this would be
           the methods .include? or .start_with?<br>
           Both of these return a boolean value.<br>
           The first method checks whether or not the value we will write after the method is included anywhere in the object.<br>
@@ -120,7 +121,7 @@
 
         <h3>Classes</h3>
         <p>Imagine you are an object that is an instance of the class Person. In a certain way, you actually are. Let me explain better.<br>
-          Let's say that a class is something inside what you can wrap the same things. In our case the class will be person and inside will be wrapped all the persons in the world.<br>
+          Let's say that a class is something inside what you can wrap the values of a same kind. In our case the class will be person and inside will be wrapped all the persons in the world.<br>
           Since you are a person, you are able to remember your own name and able to do something with it.
           When asked, you can return your name to whoever called it. In the same way, methods can interact with instances of classes.<br>
           To create a class, you have to write the keyword class followed by the class name you want to give starting by a capital letter. Then inside you can wrap what you want.
@@ -129,13 +130,13 @@
         <h3>Comments</h3>
         <p>The '#' sign is used to make comments. A comment is a bit of text that Ruby won't try to run when you run the code. It can be useful to use to remember something that you   have done for example.<br>
           Example: #this is a comment and it will not appears on the screen</p>
-    </div>
 
-    </div>
+          <form action="/question/ruby/1">
+            <a href="/question/ruby/1" class="questionbutton">Take the Quizz ❓</a>
+          </form>
+        </div>
 
-    <form action="/question/ruby/1">
-      <a href="/question/ruby/1" class="questionbutton">Take the Quiz ❓</a>
-    </form>
+      </div>
 
   </body>
 </html>
