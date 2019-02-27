@@ -93,6 +93,29 @@ Our Minimum Viable Product is the following one:<br/>
 
 ![codagram](https://user-images.githubusercontent.com/43742795/53085589-1f6a3300-34fb-11e9-939f-780e9b381b32.png)
 
+## Install instructions ##
+
+On your terminal type the following commands:
+
+$git clone git@github.com:CelineKaslin/Codagram.git => downloads program from github
+
+$pip install virtualenv => installs environment to run app
+
+$pip3 install -r requirements.txt => install required files to run
+
+$virtualenv env => creates env with name env
+
+$Source env/bin/activate => activates the virtual environment
+
+$pip install Flask => installs back end framework
+
+$brew reinstall postgresql =>only execute if error shows up
+
+$psql => to test if it is functional
+
+$python manage.py runserver
+
+- Go to localhost:5000 on your browser and you will have access to the tutorials.
 ## Tech Stack ##
 - Python
 - Flask
