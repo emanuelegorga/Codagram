@@ -24,19 +24,27 @@
       </div>
 
       <div class="lessons">
-        <h3>Data types: Numbers, Strings, Boolean</h3>
+        <h3>Data types: Numbers, Strings, Boolean, Null, Undefined, Symbols</h3>
         <p>In JavaScript, your information (or data) can come in different types.
-          There are three data types in JavaScript that we're interested in right now:
-          Integer (any number), Boolean (which can be true or false), Strings (any text).</p>
+          There are six primitives data types but right now we're interested just on three of them:<br>
+          - Integer : any number 🔢<br>
+          - Boolean : true or false 👌<br>
+          - Strings : any text 🆒</p>
 
           <h3>Strings</h3>
           <p>In programming a string is a representation of text. Every time we want to display something
             on the screen we need to write our text as a string. To do that we need to encapsulate our text
-            from single or double quotes exactly like this: "This is a string".</p>
+            with single or double quotes exactly like this: "This is a string" or 'This is a string'.</p>
 
           <h3>Integers</h3>
           <p>Integers in programming are basically numbers. Numbers don't need to be encapsulated
-            like text so you can simply write the number you want and it will be displayed on the screen.</p>
+            like text so you can simply write the number you want and it will be displayed on the screen.<br>
+            You can do all the classical operation you learned at school with the integer.<br>
+            There are 4 main arithmetic operators we're going to focus on: Addition, Subtraction, Division,
+            Multiplication. In addition to this, there is also a modulo operator: % which is to the left over of an division.<br>
+            So for example 5 % 3 = 2.
+            Finally, you can also use exponents in JavaScript by using **.<br>
+            For example : 2 ** 3 = 8</p>
 
           <h3>Booleans</h3>
           <p>In programming the Boolean Data Type is a data type that has two possible values intended to represent
@@ -53,7 +61,7 @@
             Example: let name = 'Codagram' to store a string or: let age = 10 to store a number.</p>
 
           <h3>Arrays</h3>
-          <p>Arrays are ways to store data inside the code. An example of a variable equating an array would be
+          <p>Arrays are ways to store data inside the code. They are like a list of data.<br> An example of a variable storing an array would be
             var a = [195,"Hello World",true]. Arrays can store any type of data, even other arrays!. This one stores an integer, a string
             and a boolean value. A quick way to display a value from the array a on your screen it would be: console.log(a[0]), the output
             would be 195 as arrays start from 0 and count onwards. You could also add things into the array with the .push inbuilt method. For example
@@ -64,8 +72,8 @@
           be a = [195,"Hello World",true,[1,2]].</p>
 
           <h3>Hashes</h3>
-          <p>Hashes are similar to arrays in that they hold data. However, you can access specific values in it by searching up its index. Perfect for online dictionaries!
-            An example of this would be: let dictionary = { one: "uno", two: "dos", three: "tres" }. If we type puts dictionary["one"], the output will be uno.
+          <p>Hashes are similar to arrays in that they hold data. However, they are using a key/value pair. Perfect for online dictionaries!<br>
+            An example of this would be: let dictionary = { one: "uno", two: "dos", three: "tres" }. If we type puts dictionary["one"], the output would be uno.
 
           <h3>Math</h3>
           <p>JavaScript can do a lot of powerfull things that you will discover. It can also do
@@ -91,7 +99,7 @@
             the number 11 (it also counts spaces). Pretty simple, right?</p>
 
           <h3>The '.reverse()' method</h3>
-          <p>The '.reverse()' method is called the same way '.length()' is, but instead of asking Ruby to tell you how long a string is,
+          <p>The '.reverse()' method is called the same way '.length()' is, but instead of asking JavaScript to tell you how long a string is,
             it spits out a backwards version of the string you gave it. For instance, we have our string 'Hello World'
             and we want to have it reversed, we can use the '.reverse' method.
             Example: 'Hello World'.reverse() will output 'dlroW olleH'.</p>
