@@ -69,9 +69,10 @@ def get_question_by_id(language, id_):
         return redirect(url_for('congratulationlevel1'))
 
     if request.method =='POST':
+        if len(request.form) == 0:
+            return render_template('question.html',question=question)
         rbchecked = request.form['question']
         if request.form['question'] == question.answer:
-<<<<<<< HEAD
             with counter_ruby.get_lock():
                 if language == 'ruby':
                     counter_ruby.value += 1
@@ -84,12 +85,6 @@ def get_question_by_id(language, id_):
                     id = counter_javascript.value
 
             button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">next 🙌</button></form>')
-=======
-            with counter.get_lock():
-                counter.value += 1
-                id = counter.value
-            button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">Next</button></form>')
->>>>>>> master
             flash("Well done! 💪 ")
             flash(button)
             submitbtn = "Disabled"
@@ -116,7 +111,7 @@ def get_questionlevel2_by_id(language, id_):
         return redirect(url_for('congratulationlevel2'))
 
     if request.method =='POST':
-<<<<<<< HEAD
+        txtboxvalue = request.form['user_answer']
         if request.form['user_answer'] == question2.answer:
             with counter_questionlevel2_ruby.get_lock():
                 if language == 'ruby':
@@ -129,26 +124,14 @@ def get_questionlevel2_by_id(language, id_):
                     counter_questionlevel2_javascript.value += 1
                     id = counter_questionlevel2_javascript.value
             button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">next 🙌</button></form>')
-=======
-        txtboxvalue = request.form['user_answer']
-        if request.form['user_answer'] == question2.answer:
-            with counter_questionlevel2.get_lock():
-                counter_questionlevel2.value += 1
-                id = counter_questionlevel2.value
-            button = Markup(f'<form method="GET" action="/questionlevel2/{language}/{id}"><button class="submitbutton" type="submit">Next</button></form>')
->>>>>>> master
             flash("Well done!")
             flash(button)
             submitbtn = "Disabled"
             return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue,submitbtn=submitbtn)
         else:
-<<<<<<< HEAD
             flash('That is wrong 🚫  Try again!')
-            return render_template('question2.html',question2=question2)
-=======
-            flash('That is wrong. Try again!')
             return render_template('question2.html',question2=question2,txtboxvalue=txtboxvalue,submitbtn=submitbtn)
->>>>>>> master
+
 
     return render_template('question2.html',question2=question2)
 
@@ -187,7 +170,6 @@ def setup():
     db.session.add(Question(question=u'8️⃣ Which of the following is not a valid datatype in Python?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
     db.session.add(Question(question=u'9️⃣ What is the extension used for saving a python file?', choice1=u'.python', choice2=u'.p', choice3=u'.py', choice4=u'.pt', answer=u'.py'))
     db.session.add(Question(question=u'🔟 What do you use to comment out a single line of code in Python?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
-
 # ------------ JAVASCRIPT QUESTIONS PART 1 ------------
     db.session.add(Question(question=u'1️⃣ How many data types are available in JavaScript?', choice1=u'3', choice2=u'1', choice3=u'6', choice4=u'2', answer=u'6'))
     db.session.add(Question(question=u'2️⃣ Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
@@ -235,7 +217,7 @@ def setup():
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=5, question=u'5️⃣ How would you log on the console the integer 42 as a string?', answer=u'console.log("42")'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=6, question=u'6️⃣ Given an array let list = [15, "Bike", True]. What would be the output of console.log(list[0])?', answer=u'15'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=7, question=u'7️⃣ Given an array let list = ["Cat", 2, "dog"]. If you run the command list.push(true), what would be the output of console.log(list[3]) ?', answer=u'true'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=8, question=u'8️⃣ Given the following hash: dictionary = {"marvel":  "Iron Man", "Dc Comics": "Batman"}. What would be the output of console.log(dictionary.marvel)', answer=u'Iron Man'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=8, question=u'8️⃣ Given the following hash h = {"marvel":  "Iron Man", "Dc Comics": "Batman"}. What would be the output of console.log(h.marvel)', answer=u'Iron Man'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=9, question=u'9️⃣ Given the string let string = "Hello everyone!", how would you output its length?', answer=u'console.log(string.length)'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=10, question=u'🔟 Given the string let string = "amazing", how would you log on the console the value in upper case? ', answer=u'console.log(string.toUpperCase())'))
 
