@@ -35,16 +35,6 @@ body {
   text-align: center;
 }
 
-/* .container {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.welcome {
-  margin-top: 5%;
-  margin-bottom: 5%;
-} */
-
 .homepagebutton {
   background-color: #1E90FF;
   text-decoration: none;
@@ -61,6 +51,27 @@ body {
   transition: all 1s ease;
 }
 .homepagebutton:hover {
+  background-color: white;
+  color: #1E90FF;
+  transition: all 1s ease;
+}
+
+.submitbutton {
+  background-color: #1E90FF;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 10px 25px;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.submitbutton:hover {
+  background-color: white;
+  color: orange;
+  transition: all 1s ease;
+}
+.submitbutton:hover {
   background-color: white;
   color: #1E90FF;
   transition: all 1s ease;

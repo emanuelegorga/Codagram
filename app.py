@@ -50,14 +50,18 @@ def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
     if int(id_) > 10 and language == 'ruby':
         button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
-        flash("Well done! You completed the Ruby Level 1!")
+        flash("Well done! You completed the Ruby Level 1 🎉!")
         flash(button)
         return redirect(url_for('congratulationlevel1'))
     elif int(id_) > 20 and language == 'python':
-        flash("Well done! You completed the Python Level 1!")
+        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
+        flash("Well done! You completed the Python Level 1! 🎉")
+        flash(button)
         return redirect(url_for('congratulationlevel1'))
     elif int(id_) > 30 and language == 'javascript':
-        flash("Well done! You completed the JavaScript Level 1!")
+        button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
+        flash("Well done! You completed the JavaScript Level 1 🎉!")
+        flash(button)
         return redirect(url_for('congratulationlevel1'))
 
     if request.method =='POST':
@@ -67,11 +71,11 @@ def get_question_by_id(language, id_):
                 counter.value += 1
                 id = counter.value
             button = Markup(f'<form method="GET" action="/question/{language}/{id}"><button class="submitbutton" type="submit">next</button></form>')
-            flash("Well done!")
+            flash("Well done! 💪 ")
             flash(button)
             return render_template('question.html',question=question)
         else:
-            flash('That is wrong. Try again!')
+            flash('That is wrong 🚫 Try again!')
             return render_template('question.html',question=question)
 
     return render_template('question.html',question=question)
@@ -80,13 +84,13 @@ def get_question_by_id(language, id_):
 def get_questionlevel2_by_id(language, id_):
     question2 = QuestionLevel2.query.filter_by(id=id_).first()
     if int(id_) > 10 and language == 'ruby':
-        flash("Well done! You completed the Ruby Level 2!")
+        flash("Well done! You completed the Ruby Level 2! 🏅")
         return redirect(url_for('congratulationlevel2'))
     elif int(id_) > 20 and language == 'python':
-        flash("Well done! You completed the Python Level 2!")
+        flash("Well done! You completed the Python Level 2! 🏅")
         return redirect(url_for('congratulationlevel2'))
     elif int(id_) > 30 and language == 'javascript':
-        flash("Well done! You completed the JavaScript Level 2!")
+        flash("Well done! You completed the JavaScript Level 2! 🏅")
         return redirect(url_for('congratulationlevel2'))
 
     if request.method =='POST':
@@ -109,7 +113,7 @@ def get_questionlevel2_by_id(language, id_):
 def congratulationlevel1():
     return render_template('congratulationlevel1.html')
 
-@app.route("/congratulationlevel2/<language>")
+@app.route("/congratulationlevel2")
 def congratulationlevel2():
     return render_template('congratulationlevel2.html')
 
@@ -119,35 +123,56 @@ def setup():
     db.session.execute("ALTER SEQUENCE questions_id_seq RESTART WITH 1;")
     db.session.commit()
 # ------------ RUBY QUESTIONS PART 1 ------------
-    db.session.add(Question(question=u'1) How many data types are available in Ruby?', choice1=u'1', choice2=u'2', choice3=u'3', choice4=u'4', answer=u'3'))
-    db.session.add(Question(question=u'2) Which of the following is a correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
+    db.session.add(Question(question=u'1) How many data types are available in Ruby?', choice1=u'3', choice2=u'1', choice3=u'4', choice4=u'2', answer=u'3'))
+    db.session.add(Question(question=u'2) Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
     db.session.add(Question(question=u'3) Which of the following is known as a boolean value?', choice1=u'Yes', choice2=u'Truth', choice3=u'Real', choice4=u'True', answer=u'True'))
     db.session.add(Question(question=u'4) How do you display "Hi there!" on the screen?', choice1=u'put "Hi there!"', choice2=u'puts "Hi there!"', choice3=u'"puts Hi there!"', choice4=u'puts Hi there!', answer=u'puts "Hi there!"'))
-    db.session.add(Question(question=u'5) How do you display the number 23 on the screen?', choice1=u'23', choice2=u'puts 23', choice3=u'23 puts', choice4=u'puts "23"', answer=u'puts 23'))
-    db.session.add(Question(question=u'6) Which of the following is a correct way to assign the number 30 to the variable a?', choice1=u'a = 30', choice2=u'a(30)', choice3=u'30 = a', choice4=u'a == 30', answer=u'a = 30'))
-    db.session.add(Question(question=u'7) Given a variable a = 25, how do you display the value of the variable "a"?', choice1=u'puts "a"', choice2=u'puts variable(a)', choice3=u'puts a', choice4=u'a', answer=u'puts a'))
+    db.session.add(Question(question=u'5) How do you display the integer 23 on the screen?', choice1=u'23', choice2=u'puts 23', choice3=u'23 puts', choice4=u'puts "23"', answer=u'puts 23'))
+    db.session.add(Question(question=u'6) Which of the following is the correct way to assign the integer 30 to the variable a?', choice1=u'a = 30', choice2=u'a(30)', choice3=u'30 = a', choice4=u'a == 30', answer=u'a = 30'))
+    db.session.add(Question(question=u'7) Given a variable a = 25, how do you display the value of the variable a?', choice1=u'puts "a"', choice2=u'puts variable(a)', choice3=u'puts a', choice4=u'a', answer=u'puts a'))
     db.session.add(Question(question=u'8) Which of the following is not a valid datatype in Ruby?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
-    db.session.add(Question(question=u'9) What is the extension used for saving the ruby file?', choice1=u'.ruby', choice2=u'.r', choice3=u'.rb', choice4=u'.ry', answer=u'.rb'))
+    db.session.add(Question(question=u'9) What is the extension used for saving a ruby file?', choice1=u'.ruby', choice2=u'.r', choice3=u'.rb', choice4=u'.ry', answer=u'.rb'))
     db.session.add(Question(question=u'10) How do you comment out a single line of code in Ruby?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
-# ------------ RUBY QUESTIONS PART 1 ------------
+# ------------ PYTHON QUESTIONS PART 1 ------------
+    db.session.add(Question(question=u'1) How many data types are available in Python?', choice1=u'3', choice2=u'4', choice3=u'5', choice4=u'6', answer=u'5'))
+    db.session.add(Question(question=u'2) Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'("Hello")'))
+    db.session.add(Question(question=u'3) Which of the following is known as a boolean value?', choice1=u'Yes', choice2=u'Truth', choice3=u'Real', choice4=u'True', answer=u'True'))
+    db.session.add(Question(question=u'4) How do you display "Hi there!" on the screen?', choice1=u'print "Hi there!"', choice2=u'print("Hi there!")', choice3=u'"print Hi there!"', choice4=u'prints Hi there!', answer=u'print("Hi there!")'))
+    db.session.add(Question(question=u'5) How do you display the number 23 on the screen?', choice1=u'23', choice2=u'print(23)', choice3=u'23 print', choice4=u'print "23"', answer=u'print(23)'))
+    db.session.add(Question(question=u'6) Which of the following is the correct way to assign the number 30 to the variable a?', choice1=u'a = 30', choice2=u'a(30)', choice3=u'30 = a', choice4=u'a == 30', answer=u'a = 30'))
+    db.session.add(Question(question=u'7) Given a variable a = 25, how do you display the value of the variable a?', choice1=u'print "a"', choice2=u'print variable(a)', choice3=u'print(a)', choice4=u'a', answer=u'print(a)'))
+    db.session.add(Question(question=u'8) Which of the following is not a valid datatype in Python?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
+    db.session.add(Question(question=u'9) What is the extension used for saving a python file?', choice1=u'.python', choice2=u'.p', choice3=u'.py', choice4=u'.pt', answer=u'.py'))
+    db.session.add(Question(question=u'10) What do you use to comment out a single line of code in Python?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
+
+# ------------ JAVASCRIPT QUESTIONS PART 1 ------------
+
+
+# ------------ RUBY QUESTIONS PART 2 ------------
     db.session.commit()
 
     db.session.query(QuestionLevel2).delete()
     db.session.execute("ALTER SEQUENCE questions_level2_id_seq RESTART WITH 1;")
     db.session.commit()
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'1) What do you use in between an object and a method?', answer=u'.'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'2) What is 8 % 5', answer=u'3'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=3, question=u'3) Given the string "World" how do you add Hello in front of?', answer=u'"#{Hello} World"'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4) What must every class have?', answer=u'end'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the number 42 as a string?', answer=u'puts "42"'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would print a[2] output?', answer=u'false'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would print a[3] output?', answer=u'WOW'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would the output be if you write h[2]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=1, question=u'1) What do you use to call a method on an object?', answer=u'.'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=2, question=u'2) What is the result of 8 % 5?', answer=u'3'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=3, question=u'3) Given the string "World", how do you make a string interpolation to get the final string "Hello World" to be output?', answer=u'"#{Hello} World"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4) What is the syntax to close a class ?', answer=u'end'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5) How would you display the integer 42 as a string?', answer=u'puts "42"'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6) Given an array a = [25, "Yikes!", false]. What would be the output of a[2] output?', answer=u'false'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7) Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of a[3] ?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8) Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of h["three"]', answer=u'trois'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9) Given a string s = "Test123". What would s.reverse.upcase output?', answer=u'321TSET'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include?("est1") output?', answer=u'true'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'10) Given a string s = "Test123". What would s.include? "est1" output?', answer=u'true'))
+# ------------ PYTHON QUESTIONS PART 2 ------------
+    db.session.add(QuestionLevel2(language=u'Python', question_display_id=11, question=u'q1 What is a Python?', answer=u'Snake'))
 
-    db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u'q1 What is a Python?', answer=u'Snake'))
+
+# ------------ JAVASCRIPT QUESTIONS PART 2 ------------
+
+
     db.session.commit()
+
 
 
 if __name__ == '__main__':
