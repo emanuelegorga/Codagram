@@ -48,7 +48,7 @@ def tutorial_ruby(language):
 @app.route("/question/<language>/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
-    rbchecked = None
+    rbchecked = "No Radio button checked"
     submitbtn = "Enabled"
     if int(id_) > 10 and language == 'ruby':
         button = Markup(f'<form method="GET" action="/questionlevel2/ruby/1"><button class="submitbutton" type="submit">Go on level 2!</button></form>')
@@ -67,6 +67,9 @@ def get_question_by_id(language, id_):
         return redirect(url_for('congratulationlevel1'))
 
     if request.method =='POST':
+        # print(request.form)
+        if len(request.form) == 0:
+            return render_template('question.html',question=question)
         rbchecked = request.form['question']
         if request.form['question'] == question.answer:
             with counter.get_lock():
