@@ -47,6 +47,10 @@ def tutorial_ruby(language):
     else:
         return 'Error'
 
+@app.route("/error")
+def error():
+    return render_template('error.html')        
+
 @app.route("/question/<language>/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
