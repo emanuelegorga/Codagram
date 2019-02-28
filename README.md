@@ -93,15 +93,26 @@ Our Minimum Viable Product is the following one:<br/>
 
 ![codagram](https://user-images.githubusercontent.com/43742795/53085589-1f6a3300-34fb-11e9-939f-780e9b381b32.png)
 
+## bonus features ##
+
+If we will have more time our goal would have been to :
+- Add more languages/levels
+- User authentication => User can have their ow profile page
+- Score - progress made through the course
+- Make features tests. As we have to face team member missing and we choose to put our main goal as learning with a dead line. We had to prioritise and we sadly miss time to test as it is tough using all those new tech stack.
+
 ## Tech Stack ##
-- Python
-- Flask
-- CSS
-- Html
+- Python (version 3)
+- Flask - web framework
+- Html/ CSS - front-end/styling
+- Github
+- Postgresql - DB
+- SqlAlchemy - ORM
 
 ## Code Quality ##
+
 - Travis
-- Pytest
+- Flake8 - linter
 
 ## Authors ##
 - [Onkar Sahota](https://github.com/OSSahota)
