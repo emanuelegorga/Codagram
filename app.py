@@ -47,6 +47,10 @@ def tutorial_ruby(language):
     else:
         return 'Error'
 
+@app.route("/error")
+def error():
+    return render_template('error.html')
+
 @app.route("/question/<language>/<id_>", methods=['GET', 'POST'])
 def get_question_by_id(language, id_):
     question = Question.query.filter_by(id=id_).first()
@@ -158,7 +162,7 @@ def setup():
     db.session.add(Question(question=u'7️⃣ Given a variable a = 25, how do you display the value of the variable a?', choice1=u'puts "a"', choice2=u'puts variable(a)', choice3=u'puts a', choice4=u'a', answer=u'puts a'))
     db.session.add(Question(question=u'8️⃣ Which of the following is not a valid datatype in Ruby?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
     db.session.add(Question(question=u'9️⃣ What is the extension used for saving a ruby file?', choice1=u'.ruby', choice2=u'.r', choice3=u'.rb', choice4=u'.ry', answer=u'.rb'))
-    db.session.add(Question(question=u'🔟  How do you comment out a single line of code in Ruby?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
+    db.session.add(Question(question=u'🔟 How do you comment out a single line of code in Ruby?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'#'))
 # ------------ PYTHON QUESTIONS PART 1 ------------
     db.session.add(Question(question=u'1️⃣ How many data types are available in Python?', choice1=u'3', choice2=u'4', choice3=u'5', choice4=u'6', answer=u'5'))
     db.session.add(Question(question=u'2️⃣ Which of the following is the correct way to define a string?', choice1=u'"Hello"', choice2=u'Hello', choice3=u'-Hello-', choice4=u'(Hello)', answer=u'"Hello"'))
@@ -180,7 +184,7 @@ def setup():
     db.session.add(Question(question=u'7️⃣ Given a variable a = 25, how do you log the value of the variable a on the console?', choice1=u'console.log("a")', choice2=u'console.log(variable(a))', choice3=u'console.log(a)', choice4=u'a', answer=u'console.log(a)'))
     db.session.add(Question(question=u'8️⃣ Which of the following is not a valid datatype in JavaScript?', choice1=u'Integer', choice2=u'String', choice3=u'Timedate', choice4=u'Boolean', answer=u'Timedate'))
     db.session.add(Question(question=u'9️⃣ What is the extension used for saving a JavaScript file?', choice1=u'.javascript', choice2=u'.jp', choice3=u'.js', choice4=u'.jt', answer=u'.js'))
-    db.session.add(Question(question=u'🔟) How do you comment out a single line of code in JavaScript?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'//'))
+    db.session.add(Question(question=u'🔟 How do you comment out a single line of code in JavaScript?', choice1=u'#', choice2=u'begin and end', choice3=u'//', choice4=u'<!- ->', answer=u'//'))
 
 # ------------ RUBY QUESTIONS PART 2 ------------
     db.session.commit()
@@ -193,11 +197,11 @@ def setup():
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=3, question=u'3️⃣ How do you assign the string "Programming is fun" to the variable a?', answer=u'a = "Programming is fun"'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=4, question=u'4️⃣ What is the syntax to close a class ?', answer=u'end'))
     db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=5, question=u'5️⃣ How would you display the integer 42 as a string?', answer=u'puts "42"'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6️⃣ Given an array a = [25, "Yikes!", false]. What would be the output of puts a[2] output?', answer=u'false'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7️⃣ Given an array a = [25, "Yikes!", false]. If you do a.push("WOW"), what would be the output of puts a[3] ?', answer=u'WOW'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8️⃣ Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}. What would be the output of puts h["three"]', answer=u'trois'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9️⃣ Given a string s = "Test123". What would puts s.reverse.upcase output?', answer=u'321TSET'))
-    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'🔟 Given a string s = "Test123". What would puts s.include? "est1" output?', answer=u'true'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=6, question=u'6️⃣ Given an array a = [25, "Yikes!", false], what would be the output of puts a[2] output?', answer=u'false'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=7, question=u'7️⃣ Given an array a = [25, "Yikes!", false], if you do a.push("WOW"), what would be the output of puts a[3] ?', answer=u'WOW'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=8, question=u'8️⃣ Given a hash h = {"one" => "un", "two" => "deux", "three" => "trois"}, what would be the output of puts h["three"]', answer=u'trois'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=9, question=u'9️⃣ Given a string s = "Test123", what would puts s.reverse.upcase output?', answer=u'321TSET'))
+    db.session.add(QuestionLevel2(language=u'Ruby', question_display_id=10, question=u'🔟 Given a string s = "Test123", what would puts s.include? "est1" output?', answer=u'true'))
 # ------------ PYTHON QUESTIONS PART 2 ------------
     db.session.add(QuestionLevel2(language=u'Python', question_display_id=1, question=u' 1️⃣ What is a Python?', answer=u'Programming language'))
     db.session.add(QuestionLevel2(language=u'Python', question_display_id=2, question=u'2️⃣ What is the output of print (10 * 2)?', answer=u'20'))
@@ -215,9 +219,9 @@ def setup():
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=3, question=u'3️⃣ Given the variable let javascript = "Programming Language", how do you log the value of the variable javascript?', answer=u'console.log(javascript)'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=4, question=u'4️⃣ What is the method to reverse the order of a string?', answer=u'.reverse()'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=5, question=u'5️⃣ How would you log on the console the integer 42 as a string?', answer=u'console.log("42")'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=6, question=u'6️⃣ Given an array let list = [15, "Bike", True]. What would be the output of console.log(list[0])?', answer=u'15'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=7, question=u'7️⃣ Given an array let list = ["Cat", 2, "dog"]. If you run the command list.push(true), what would be the output of console.log(list[3]) ?', answer=u'true'))
-    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=8, question=u'8️⃣ Given the following hash h = {"marvel":  "Iron Man", "Dc Comics": "Batman"}. What would be the output of console.log(h.marvel)', answer=u'Iron Man'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=6, question=u'6️⃣ Given an array let list = [15, "Bike", True], what would be the output of console.log(list[0])?', answer=u'15'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=7, question=u'7️⃣ Given an array let list = ["Cat", 2, "dog"], if you run the command list.push(true), what would be the output of console.log(list[3]) ?', answer=u'true'))
+    db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=8, question=u'8️⃣ Given the following hash h = {"marvel":  "Iron Man", "Dc Comics": "Batman"}, what would be the output of console.log(h.marvel)', answer=u'Iron Man'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=9, question=u'9️⃣ Given the string let string = "Hello everyone!", how would you output its length?', answer=u'console.log(string.length)'))
     db.session.add(QuestionLevel2(language=u'JavaScript', question_display_id=10, question=u'🔟 Given the string let string = "amazing", how would you log on the console the value in upper case? ', answer=u'console.log(string.toUpperCase())'))
 
