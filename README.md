@@ -5,6 +5,8 @@
 We are building a simple learning web app targeting the 7 to 11 years old.<br/>
 Our goal is to introduce kids to code :computer: Who knows we might create vocation ... :heart:
 
+Deployed on: https://examplecodagram.herokuapp.com/
+
 ## Screen shots ##
 
 ![homepage](https://user-images.githubusercontent.com/43742795/53587325-f5131800-3b81-11e9-9508-269966f49ddc.png)
